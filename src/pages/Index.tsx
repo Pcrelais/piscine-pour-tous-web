@@ -391,8 +391,8 @@ const Index = () => {
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <img 
-                  src="/lovable-uploads/77d5858b-ed9a-4dc2-96dd-872fbe2ac8ea.png" 
-                  alt="Piscine avec terrasse en bois dans un cadre naturel"
+                  src="/lovable-uploads/25de7da0-5191-4730-883b-cbec2bd482cd.png" 
+                  alt="Piscine rectangulaire moderne avec terrasse verte"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#004E7C]/10 to-transparent"></div>
