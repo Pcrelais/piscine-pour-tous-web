@@ -18,8 +18,17 @@ const Header = ({ scrollToSection }: HeaderProps) => {
   return (
     <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b z-50">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+        <div className="flex justify-between items-center lg:justify-between">
+          {/* Menu Mobile - Gauche sur mobile uniquement */}
+          <button 
+            className="lg:hidden text-[#004E7C] p-2 flex-shrink-0"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+
+          {/* Logo - Centré sur mobile, à gauche sur desktop */}
+          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 lg:order-none absolute left-1/2 transform -translate-x-1/2 lg:static lg:transform-none">
             <img 
               src="/lovable-uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
               alt="PiscinePourTous Logo" 
@@ -54,13 +63,8 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             <span className="xl:hidden">Devis gratuit</span>
           </Button>
 
-          {/* Menu Mobile */}
-          <button 
-            className="lg:hidden text-[#004E7C] p-2 flex-shrink-0"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Espace invisible pour équilibrer sur mobile */}
+          <div className="lg:hidden w-10 flex-shrink-0"></div>
         </div>
       </div>
 
