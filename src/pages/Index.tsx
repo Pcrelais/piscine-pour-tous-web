@@ -723,7 +723,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
                   alt="PiscinePourTous Logo" 
-                  className="h-8 w-auto filter brightness-0 invert"
+                  className="h-8 w-auto"
                 />
               </div>
               <p className="text-blue-200">
