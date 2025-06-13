@@ -269,93 +269,87 @@ const Index = () => {
         )}
       </header>
 
-      {/* Section Accueil avec Slider - Dégradé bleu/turquoise */}
-      <section id="accueil" className="pt-20 pb-16 bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40">
-        <div className="container mx-auto px-4 py-16">
-          <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent>
-              {heroSlides.map((slide, index) => (
-                <CarouselItem key={index}>
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Contenu textuel */}
-                    <div className="text-center lg:text-left space-y-6">
-                      <div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#004E7C] mb-4">
-                          {slide.title}
-                        </h1>
-                        <p className="text-xl md:text-2xl text-[#00AEEF] font-semibold mb-6">
-                          {slide.subtitle}
-                        </p>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <p className="text-lg text-gray-600 leading-relaxed">
-                          {slide.description}
-                        </p>
-                        <p className="text-lg text-[#004E7C] font-medium">
-                          {slide.highlight}
-                        </p>
-                      </div>
-                      
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <Button 
-                          size="lg" 
-                          onClick={() => scrollToSection('contact')}
-                          className="bg-[#00AEEF] hover:bg-[#004E7C] text-white text-lg px-8 py-3"
-                        >
-                          Demander un devis gratuit
-                        </Button>
-                        <Button 
-                          size="lg" 
-                          variant="outline"
-                          onClick={() => scrollToSection('realisations')}
-                          className="text-[#004E7C] border-[#004E7C] hover:bg-[#004E7C] hover:text-white text-lg px-8 py-3"
-                        >
-                          Voir nos réalisations
-                        </Button>
-                      </div>
+      {/* Section Accueil Hero avec image de fond */}
+      <section 
+        id="accueil" 
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0, 78, 124, 0.7), rgba(0, 174, 239, 0.6)), url('/lovable-uploads/8f07b898-1bc3-4f84-844f-0e7d05451f63.png')`
+        }}
+      >
+        <div className="container mx-auto px-4 text-center text-white relative z-10">
+          <div className="max-w-5xl mx-auto">
+            {/* Titre principal */}
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Votre piscine, notre métier
+            </h1>
+            
+            {/* Sous-titre */}
+            <p className="text-2xl md:text-3xl font-semibold mb-8 text-[#A0E7E5]">
+              Un chantier maîtrisé, une piscine pour tous les budgets
+            </p>
+            
+            {/* Description */}
+            <div className="space-y-6 mb-10">
+              <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
+                Chez PiscinePourTous, nous vous accompagnons de A à Z dans la pose de votre piscine en kit. 
+                Que vous rêviez d'une piscine enterrée ou semi-enterrée, notre équipe met tout en œuvre 
+                pour un chantier maîtrisé, rapide et économique.
+              </p>
+              
+              <p className="text-xl md:text-2xl font-medium text-[#A0E7E5] max-w-3xl mx-auto">
+                Profitez d'un projet personnalisé adapté à votre terrain, vos envies… et votre budget.
+              </p>
+            </div>
+            
+            {/* Boutons d'action */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+              <Button 
+                size="lg" 
+                onClick={() => scrollToSection('contact')}
+                className="bg-[#00AEEF] hover:bg-white hover:text-[#004E7C] text-white text-xl px-10 py-4 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Demander un devis gratuit
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => scrollToSection('realisations')}
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#004E7C] text-xl px-10 py-4 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Voir nos réalisations
+              </Button>
+            </div>
 
-                      {/* Zone d'intervention et garanties */}
-                      <div className="grid md:grid-cols-3 gap-4 pt-6">
-                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
-                          <MapPin className="h-5 w-5 text-[#00AEEF]" />
-                          <span className="font-medium">Zone : Isère / Savoie</span>
-                        </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
-                          <CheckCircle className="h-5 w-5 text-[#00AEEF]" />
-                          <span className="font-medium">Pose rapide</span>
-                        </div>
-                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
-                          <Shield className="h-5 w-5 text-[#00AEEF]" />
-                          <span className="font-medium">Garantie qualité</span>
-                        </div>
-                      </div>
-                    </div>
+            {/* Zone d'intervention et garanties */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              <div className="flex items-center justify-center space-x-3">
+                <MapPin className="h-6 w-6 text-[#A0E7E5]" />
+                <span className="font-medium text-lg">Zone : Isère / Savoie</span>
+              </div>
+              <div className="flex items-center justify-center space-x-3">
+                <CheckCircle className="h-6 w-6 text-[#A0E7E5]" />
+                <span className="font-medium text-lg">Pose rapide</span>
+              </div>
+              <div className="flex items-center justify-center space-x-3">
+                <Shield className="h-6 w-6 text-[#A0E7E5]" />
+                <span className="font-medium text-lg">Garantie qualité</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <ChevronDown className="h-10 w-10 text-white animate-bounce cursor-pointer" 
+                       onClick={() => scrollToSection('apropos')} />
+        </div>
+      </section>
 
-                    {/* Image */}
-                    <div className="relative">
-                      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                        <img 
-                          src={slide.image} 
-                          alt="Piscine cristalline"
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#004E7C]/20 to-transparent"></div>
-                      </div>
-                      {/* Effet décoratif */}
-                      <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#00AEEF]/20 rounded-full blur-xl"></div>
-                      <div className="absolute -top-4 -left-4 w-32 h-32 bg-[#A0E7E5]/30 rounded-full blur-xl"></div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden lg:flex" />
-            <CarouselNext className="hidden lg:flex" />
-          </Carousel>
-
-          {/* Aperçu Services */}
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+      {/* Aperçu Services */}
+      <section className="py-16 bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
             <h3 className="col-span-full text-3xl font-bold text-[#004E7C] text-center mb-8">
               Des solutions pour tous les projets
             </h3>
@@ -375,12 +369,6 @@ const Index = () => {
               </Card>
             ))}
           </div>
-        </div>
-        
-        {/* Scroll indicator */}
-        <div className="text-center pb-8">
-          <ChevronDown className="h-8 w-8 text-[#00AEEF] mx-auto animate-bounce cursor-pointer" 
-                       onClick={() => scrollToSection('apropos')} />
         </div>
       </section>
 
@@ -429,7 +417,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100">
             <div className="text-center mb-8">
               <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Nos Valeurs</h4>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -439,7 +427,7 @@ const Index = () => {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {valeurs.map((valeur, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div key={index} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
                       {valeur.icon}
@@ -452,7 +440,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100 mt-12">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100 mt-12">
             <div className="text-center mb-8">
               <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Pourquoi nous faire confiance ?</h4>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -462,7 +450,7 @@ const Index = () => {
             
             <div className="grid md:grid-cols-3 gap-8">
               {engagements.map((engagement, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div key={index} className="bg-white/70 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
                       {engagement.icon}
@@ -489,7 +477,7 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/60 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Fourniture et pose de piscines en kit</CardTitle>
@@ -513,7 +501,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/60 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Users className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto-construction</CardTitle>
@@ -534,7 +522,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/60 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Wrench className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Entretien & rénovation</CardTitle>
@@ -555,7 +543,7 @@ const Index = () => {
             </Card>
           </div>
 
-          <div className="text-center p-8 bg-white/60 backdrop-blur-sm rounded-lg border border-white/40">
+          <div className="text-center p-8 bg-white/40 backdrop-blur-sm rounded-lg border border-white/40">
             <h3 className="text-2xl font-semibold text-[#004E7C] mb-6">Pourquoi choisir PiscinePourTous ?</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center">
@@ -635,7 +623,7 @@ const Index = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Formulaire */}
-            <Card className="bg-white/90 backdrop-blur-sm">
+            <Card className="bg-white/60 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#004E7C]">Formulaire de contact</CardTitle>
                 <CardDescription>
@@ -708,7 +696,7 @@ const Index = () => {
 
             {/* Informations de contact */}
             <div className="space-y-8">
-              <Card className="bg-white/90 backdrop-blur-sm">
+              <Card className="bg-white/60 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[#004E7C]">Nos coordonnées</CardTitle>
                 </CardHeader>
@@ -747,7 +735,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/60 backdrop-blur-sm border-white/40">
+              <Card className="bg-white/40 backdrop-blur-sm border-white/40">
                 <CardHeader>
                   <CardTitle className="text-xl text-[#004E7C]">Astuce</CardTitle>
                 </CardHeader>
