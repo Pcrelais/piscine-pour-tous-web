@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -30,7 +29,7 @@ const Header = ({ scrollToSection }: HeaderProps) => {
           {/* Logo - Centré sur mobile, à gauche sur desktop */}
           <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 lg:order-none absolute left-1/2 transform -translate-x-1/2 lg:static lg:transform-none">
             <img 
-              src="/lovable-uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
+              src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
               alt="PiscinePourTous Logo" 
               className="h-12 sm:h-16 w-auto"
             />

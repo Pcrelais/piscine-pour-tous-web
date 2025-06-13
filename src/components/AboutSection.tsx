@@ -1,4 +1,3 @@
-
 import { CheckCircle, Award, UserCheck, Settings } from "lucide-react";
 
 const AboutSection = () => {
@@ -75,7 +74,7 @@ const AboutSection = () => {
           <div className="relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img 
-                src="/lovable-uploads/25de7da0-5191-4730-883b-cbec2bd482cd.png" 
+                src="/uploads/25de7da0-5191-4730-883b-cbec2bd482cd.png" 
                 alt="Piscine rectangulaire moderne avec terrasse verte"
                 className="w-full h-full object-cover"
               />
