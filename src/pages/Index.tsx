@@ -269,7 +269,7 @@ const Index = () => {
         )}
       </header>
 
-      {/* Section Accueil avec Slider */}
+      {/* Section Accueil avec Slider - Garde le dégradé actuel */}
       <section id="accueil" className="pt-20 pb-16 bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20">
         <div className="container mx-auto px-4 py-16">
           <Carousel className="w-full max-w-6xl mx-auto">
@@ -384,7 +384,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section À propos */}
+      {/* Section À propos - Fond blanc */}
       <section id="apropos" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
@@ -477,8 +477,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section Services */}
-      <section id="services" className="py-16 bg-[#F5F5F5]">
+      {/* Section Services - Nouveau dégradé léger gris/beige */}
+      <section id="services" className="py-16 bg-gradient-to-br from-[#F8F8F8] to-[#F4EBD0]/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#004E7C] mb-6">Nos Services</h2>
@@ -578,7 +578,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section Réalisations */}
+      {/* Section Réalisations - Fond blanc pour mettre en valeur les photos */}
       <section id="realisations" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -620,8 +620,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section Contact */}
-      <section id="contact" className="py-16 bg-[#F5F5F5]">
+      {/* Section Contact - Nouveau dégradé bleu clair/turquoise */}
+      <section id="contact" className="py-16 bg-gradient-to-br from-[#F0F9FF] to-[#A0E7E5]/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#004E7C] mb-6">Contact</h2>
