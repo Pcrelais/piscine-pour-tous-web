@@ -85,27 +85,45 @@ const Index = () => {
   const realisations = [
     {
       id: 1,
-      title: "Piscine familiale - Grenoble",
-      image: "/placeholder.svg",
-      description: "Installation complète d'une piscine 8x4m avec plage"
+      title: "Piscine avec terrasse bois - Grenoble",
+      image: "/lovable-uploads/eef9c163-3d43-43fc-b2a7-d35bd91f3a39.png",
+      description: "Installation complète d'une piscine avec terrasse bois intégrée"
     },
     {
       id: 2,
-      title: "Rénovation - Chambéry", 
-      image: "/placeholder.svg",
-      description: "Rénovation complète liner et équipements"
+      title: "Piscine moderne avec plage - Chambéry", 
+      image: "/lovable-uploads/5eb42fbb-3952-4219-bb9e-7d459e3e2baa.png",
+      description: "Réalisation d'une piscine moderne avec plage immergée"
     },
     {
       id: 3,
-      title: "Auto-construction accompagnée - Voiron",
-      image: "/placeholder.svg",
-      description: "Accompagnement technique pour auto-construction"
+      title: "Piscine forme libre - Voiron",
+      image: "/lovable-uploads/b6aa7e1c-2563-4752-8542-a619f4d319ae.png",
+      description: "Piscine aux formes organiques parfaitement intégrée"
     },
     {
       id: 4,
-      title: "Piscine hors-sol - Annecy",
-      image: "/placeholder.svg",
-      description: "Installation piscine hors-sol avec terrasse"
+      title: "Piscine rectangulaire - Annecy",
+      image: "/lovable-uploads/6e67c909-c3f6-45ce-8016-a766150a682b.png",
+      description: "Installation piscine rectangulaire avec margelles en pierre"
+    },
+    {
+      id: 5,
+      title: "Piscine design moderne - Aix-les-Bains",
+      image: "/lovable-uploads/548de911-0ba7-43cc-b3a3-b9b26552f9e8.png",
+      description: "Piscine au design contemporain avec éclairage LED"
+    },
+    {
+      id: 6,
+      title: "Piscine avec spa intégré - La Motte-Servolex",
+      image: "/lovable-uploads/7b6b33dd-4a23-4410-9dca-0b0b7c8ef9ff.png",
+      description: "Installation complète piscine et spa intégré"
+    },
+    {
+      id: 7,
+      title: "Piscine familiale - Saint-Égrève",
+      image: "/lovable-uploads/c5122349-bc44-499f-8728-bb25c55a7bd9.png",
+      description: "Piscine familiale avec escalier roman et plage"
     }
   ];
 
@@ -524,24 +542,31 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {realisations.map((realisation) => (
-              <Card key={realisation.id} className="overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="aspect-video bg-gradient-to-br from-[#A0E7E5]/20 to-[#00AEEF]/20 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <Droplets className="h-16 w-16 mx-auto mb-4 text-[#00AEEF]" />
-                    <p className="text-sm">Photo de réalisation</p>
-                  </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl text-[#004E7C]">{realisation.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {realisation.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
+          <Carousel className="w-full max-w-6xl mx-auto">
+            <CarouselContent>
+              {realisations.map((realisation) => (
+                <CarouselItem key={realisation.id} className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden hover:shadow-xl transition-shadow h-full">
+                    <div className="aspect-video">
+                      <img 
+                        src={realisation.image} 
+                        alt={realisation.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-xl text-[#004E7C]">{realisation.title}</CardTitle>
+                      <CardDescription className="text-base">
+                        {realisation.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
