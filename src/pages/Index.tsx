@@ -30,6 +30,8 @@ import {
   Settings
 } from "lucide-react";
 import CookieBanner from "@/components/CookieBanner";
+import { useEmailJS } from "@/hooks/useEmailJS";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,6 +43,9 @@ const Index = () => {
     message: ''
   });
 
+  const { sendEmail, isLoading } = useEmailJS();
+  const { toast } = useToast();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -49,10 +54,31 @@ const Index = () => {
     setIsMenuOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Merci pour votre demande ! Nous vous recontacterons rapidement.');
+    
+    const result = await sendEmail(formData);
+    
+    if (result.success) {
+      toast({
+        title: "Message envoyé !",
+        description: "Merci pour votre demande ! Nous vous recontacterons rapidement.",
+      });
+      // Réinitialiser le formulaire
+      setFormData({
+        nom: '',
+        email: '',
+        telephone: '',
+        commune: '',
+        message: ''
+      });
+    } else {
+      toast({
+        title: "Erreur d'envoi",
+        description: "Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    }
   };
 
   const heroSlides = [
@@ -661,8 +687,12 @@ const Index = () => {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-[#00AEEF] hover:bg-[#004E7C] text-white">
-                    Envoyer
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-[#00AEEF] hover:bg-[#004E7C] text-white"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Envoi en cours..." : "Envoyer"}
                   </Button>
                 </form>
               </CardContent>
