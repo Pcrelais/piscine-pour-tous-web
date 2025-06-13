@@ -86,43 +86,43 @@ const Index = () => {
     {
       id: 1,
       title: "Piscine avec terrasse bois - Grenoble",
-      image: "/lovable-uploads/eef9c163-3d43-43fc-b2a7-d35bd91f3a39.png",
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Installation complète d'une piscine avec terrasse bois intégrée"
     },
     {
       id: 2,
       title: "Piscine moderne avec plage - Chambéry", 
-      image: "/lovable-uploads/5eb42fbb-3952-4219-bb9e-7d459e3e2baa.png",
+      image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Réalisation d'une piscine moderne avec plage immergée"
     },
     {
       id: 3,
       title: "Piscine forme libre - Voiron",
-      image: "/lovable-uploads/b6aa7e1c-2563-4752-8542-a619f4d319ae.png",
+      image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Piscine aux formes organiques parfaitement intégrée"
     },
     {
       id: 4,
       title: "Piscine rectangulaire - Annecy",
-      image: "/lovable-uploads/6e67c909-c3f6-45ce-8016-a766150a682b.png",
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Installation piscine rectangulaire avec margelles en pierre"
     },
     {
       id: 5,
       title: "Piscine design moderne - Aix-les-Bains",
-      image: "/lovable-uploads/548de911-0ba7-43cc-b3a3-b9b26552f9e8.png",
+      image: "https://images.unsplash.com/photo-1571077071734-f9a86ff5f6b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Piscine au design contemporain avec éclairage LED"
     },
     {
       id: 6,
       title: "Piscine avec spa intégré - La Motte-Servolex",
-      image: "/lovable-uploads/7b6b33dd-4a23-4410-9dca-0b0b7c8ef9ff.png",
+      image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Installation complète piscine et spa intégré"
     },
     {
       id: 7,
       title: "Piscine familiale - Saint-Égrève",
-      image: "/lovable-uploads/c5122349-bc44-499f-8728-bb25c55a7bd9.png",
+      image: "https://images.unsplash.com/photo-1560448075-bb485b067938?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       description: "Piscine familiale avec escalier roman et plage"
     }
   ];
