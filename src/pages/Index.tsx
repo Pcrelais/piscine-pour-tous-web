@@ -86,43 +86,43 @@ const Index = () => {
     {
       id: 1,
       title: "Piscine avec terrasse bois - Grenoble",
-      image: "/lovable-uploads/eef9c163-3d43-43fc-b2a7-d35bd91f3a39.png",
+      image: "/lovable-uploads/7c927411-e657-4c40-b14e-76f721b0f9f3.png",
       description: "Installation complète d'une piscine avec terrasse bois intégrée"
     },
     {
       id: 2,
       title: "Piscine moderne avec plage - Chambéry", 
-      image: "/lovable-uploads/5eb42fbb-3952-4219-bb9e-7d459e3e2baa.png",
+      image: "/lovable-uploads/13b45f99-1927-433e-9ef9-6bba4a96471c.png",
       description: "Réalisation d'une piscine moderne avec plage immergée"
     },
     {
       id: 3,
       title: "Piscine forme libre - Voiron",
-      image: "/lovable-uploads/b6aa7e1c-2563-4752-8542-a619f4d319ae.png",
+      image: "/lovable-uploads/9da0d685-b4f6-4fd8-85ec-5a58e15b006a.png",
       description: "Piscine aux formes organiques parfaitement intégrée"
     },
     {
       id: 4,
       title: "Piscine rectangulaire - Annecy",
-      image: "/lovable-uploads/6e67c909-c3f6-45ce-8016-a766150a682b.png",
+      image: "/lovable-uploads/66cfe920-2fc3-4198-ac18-75adffc5deab.png",
       description: "Installation piscine rectangulaire avec margelles en pierre"
     },
     {
       id: 5,
       title: "Piscine design moderne - Aix-les-Bains",
-      image: "/lovable-uploads/548de911-0ba7-43cc-b3a3-b9b26552f9e8.png",
+      image: "/lovable-uploads/72d10308-2115-473e-8264-744d72e7d671.png",
       description: "Piscine au design contemporain avec éclairage LED"
     },
     {
       id: 6,
       title: "Piscine avec spa intégré - La Motte-Servolex",
-      image: "/lovable-uploads/7b6b33dd-4a23-4410-9dca-0b0b7c8ef9ff.png",
+      image: "/lovable-uploads/b1ee128e-b479-4f7f-94e9-7d336e778edd.png",
       description: "Installation complète piscine et spa intégré"
     },
     {
       id: 7,
       title: "Piscine familiale - Saint-Égrève",
-      image: "/lovable-uploads/c5122349-bc44-499f-8728-bb25c55a7bd9.png",
+      image: "/lovable-uploads/0dbd2342-24e5-4df4-8bcb-27edc6e87335.png",
       description: "Piscine familiale avec escalier roman et plage"
     }
   ];
