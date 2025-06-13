@@ -360,7 +360,7 @@ const Index = () => {
               Des solutions pour tous les projets
             </h3>
             {services.map((service, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow border-[#A0E7E5]">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm border-[#A0E7E5]">
                 <CardHeader>
                   <div className="flex justify-center mb-4">
                     {service.icon}
@@ -429,7 +429,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20">
+          <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100">
             <div className="text-center mb-8">
               <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Nos Valeurs</h4>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -439,7 +439,7 @@ const Index = () => {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {valeurs.map((valeur, index) => (
-                <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:bg-white/80">
+                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
                       {valeur.icon}
@@ -452,7 +452,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20 mt-12">
+          <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100 mt-12">
             <div className="text-center mb-8">
               <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Pourquoi nous faire confiance ?</h4>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -462,7 +462,7 @@ const Index = () => {
             
             <div className="grid md:grid-cols-3 gap-8">
               {engagements.map((engagement, index) => (
-                <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:bg-white/80">
+                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-md transition-all duration-300 border border-gray-100">
                   <div className="flex flex-col items-center text-center">
                     <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
                       {engagement.icon}
@@ -489,7 +489,7 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            <Card className="h-full hover:shadow-xl transition-shadow">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Fourniture et pose de piscines en kit</CardTitle>
@@ -513,7 +513,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full hover:shadow-xl transition-shadow">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Users className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto-construction</CardTitle>
@@ -534,7 +534,7 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="h-full hover:shadow-xl transition-shadow">
+            <Card className="h-full hover:shadow-xl transition-shadow bg-white/90 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Wrench className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
                 <CardTitle className="text-2xl text-[#004E7C]">Entretien & rénovation</CardTitle>
@@ -555,7 +555,7 @@ const Index = () => {
             </Card>
           </div>
 
-          <div className="text-center p-8 bg-[#A0E7E5]/20 rounded-lg">
+          <div className="text-center p-8 bg-white/60 backdrop-blur-sm rounded-lg border border-white/40">
             <h3 className="text-2xl font-semibold text-[#004E7C] mb-6">Pourquoi choisir PiscinePourTous ?</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center">
@@ -635,7 +635,7 @@ const Index = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Formulaire */}
-            <Card>
+            <Card className="bg-white/90 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#004E7C]">Formulaire de contact</CardTitle>
                 <CardDescription>
@@ -708,7 +708,7 @@ const Index = () => {
 
             {/* Informations de contact */}
             <div className="space-y-8">
-              <Card>
+              <Card className="bg-white/90 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[#004E7C]">Nos coordonnées</CardTitle>
                 </CardHeader>
@@ -747,7 +747,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#A0E7E5]/20">
+              <Card className="bg-white/60 backdrop-blur-sm border-white/40">
                 <CardHeader>
                   <CardTitle className="text-xl text-[#004E7C]">Astuce</CardTitle>
                 </CardHeader>
