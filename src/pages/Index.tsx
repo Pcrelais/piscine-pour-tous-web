@@ -552,6 +552,13 @@ const Index = () => {
                         src={realisation.image} 
                         alt={realisation.title}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.error('Image failed to load:', realisation.image);
+                          e.currentTarget.style.display = 'none';
+                        }}
+                        onLoad={() => {
+                          console.log('Image loaded successfully:', realisation.image);
+                        }}
                       />
                     </div>
                     <CardHeader>
