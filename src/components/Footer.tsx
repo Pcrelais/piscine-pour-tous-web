@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-6 pt-6 border-t border-blue-700 text-center text-sm text-blue-200">
-          <p>© 2024 PiscinePourTous - Tous droits réservés</p>
+          <p>© 2025 PiscinePourTous - Tous droits réservés</p>
           <p className="mt-2">
             Crédits visuels : Réalisations PiscinePourTous, CANVA, photos clients avec autorisation
           </p>
