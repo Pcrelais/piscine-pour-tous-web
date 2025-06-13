@@ -430,14 +430,16 @@ const Index = () => {
           </div>
 
           <div className="bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20 p-8 rounded-lg">
-            <h4 className="text-xl font-semibold text-[#004E7C] mb-6">Nos Valeurs</h4>
-            <div className="space-y-4">
+            <h4 className="text-2xl font-semibold text-[#004E7C] mb-8 text-center">Nos Valeurs</h4>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {valeurs.map((valeur, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  {valeur.icon}
-                  <div>
-                    <h5 className="font-semibold text-[#004E7C]">{valeur.title}</h5>
-                    <p className="text-sm text-gray-600">{valeur.description}</p>
+                <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:bg-white/80">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-3 mb-4">
+                      {valeur.icon}
+                    </div>
+                    <h5 className="text-lg font-semibold text-[#004E7C] mb-3">{valeur.title}</h5>
+                    <p className="text-sm text-gray-600 leading-relaxed">{valeur.description}</p>
                   </div>
                 </div>
               ))}
@@ -782,7 +784,7 @@ const Index = () => {
               <ul className="space-y-2 text-blue-200">
                 <li>Vente et pose de piscines</li>
                 <li>Accompagnement technique</li>
-                <li>Entretien et rénovation</li>
+                <li>Entretien & rénovation</li>
               </ul>
             </div>
             
