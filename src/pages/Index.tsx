@@ -18,7 +18,10 @@ import {
   ChevronDown,
   Menu,
   X,
-  CheckCircle
+  CheckCircle,
+  Award,
+  UserCheck,
+  Settings
 } from "lucide-react";
 
 const Index = () => {
@@ -110,6 +113,24 @@ const Index = () => {
       icon: <CheckCircle className="h-6 w-6 text-[#00AEEF]" />,
       title: "Proximité",
       description: "Un service de proximité, à l'écoute de vos attentes"
+    }
+  ];
+
+  const engagements = [
+    {
+      icon: <Award className="h-8 w-8 text-[#00AEEF]" />,
+      title: "Expertise terrain",
+      description: "Chaque projet est unique, nous adaptons la pose à votre environnement"
+    },
+    {
+      icon: <UserCheck className="h-8 w-8 text-[#00AEEF]" />,
+      title: "Conseils personnalisés",
+      description: "Pose complète ou accompagnement, nous sommes là pour vous guider"
+    },
+    {
+      icon: <Settings className="h-8 w-8 text-[#00AEEF]" />,
+      title: "Satisfaction client",
+      description: "Notre meilleure publicité, ce sont les retours positifs de nos clients"
     }
   ];
 
@@ -287,7 +308,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h3 className="text-2xl font-semibold text-[#004E7C] mb-6">Qui sommes-nous ?</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -317,21 +338,26 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="text-center bg-[#F4EBD0] p-8 rounded-lg">
-            <h4 className="text-xl font-semibold text-[#004E7C] mb-4">Pourquoi nous faire confiance ?</h4>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div>
-                <h5 className="font-semibold text-[#004E7C] mb-2">Expertise terrain</h5>
-                <p className="text-sm text-gray-600">Chaque projet est unique, nous adaptons la pose à votre environnement</p>
-              </div>
-              <div>
-                <h5 className="font-semibold text-[#004E7C] mb-2">Conseils personnalisés</h5>
-                <p className="text-sm text-gray-600">Pose complète ou accompagnement, nous sommes là pour vous guider</p>
-              </div>
-              <div>
-                <h5 className="font-semibred text-[#004E7C] mb-2">Satisfaction client</h5>
-                <p className="text-sm text-gray-600">Notre meilleure publicité, ce sont les retours positifs de nos clients</p>
-              </div>
+          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20">
+            <div className="text-center mb-8">
+              <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Pourquoi nous faire confiance ?</h4>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Notre expertise et notre engagement font la différence sur chaque projet
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {engagements.map((engagement, index) => (
+                <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:bg-white/80">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
+                      {engagement.icon}
+                    </div>
+                    <h5 className="text-xl font-semibold text-[#004E7C] mb-3">{engagement.title}</h5>
+                    <p className="text-gray-600 leading-relaxed">{engagement.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
