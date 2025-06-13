@@ -12,7 +12,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
       id="accueil" 
       className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{ 
-        backgroundImage: `linear-gradient(rgba(0, 78, 124, 0.7), rgba(0, 174, 239, 0.6)), url('/lovable-uploads/8f07b898-1bc3-4f84-844f-0e7d05451f63.png')`
+        backgroundImage: `linear-gradient(rgba(0, 78, 124, 0.7), rgba(0, 174, 239, 0.6)), url('/lovable-uploads/fd7c6e41-e86b-4c2f-84cf-aaadc2ffd40a.png')`
       }}
     >
       <div className="container mx-auto px-4 text-center text-white relative z-10">
