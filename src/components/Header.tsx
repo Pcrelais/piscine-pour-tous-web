@@ -1,4 +1,5 @@
 
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -32,7 +33,7 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             <img 
               src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
               alt="PiscinePourTous Logo" 
-              className="h-10 sm:h-12 lg:h-16 w-auto"
+              className="h-14 sm:h-16 lg:h-16 w-auto"
             />
           </div>
           
@@ -118,3 +119,4 @@ const Header = ({ scrollToSection }: HeaderProps) => {
 };
 
 export default Header;
+
