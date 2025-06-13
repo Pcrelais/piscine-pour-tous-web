@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -15,15 +16,15 @@ const Header = ({ scrollToSection }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b z-50">
+    <header className="fixed top-0 w-full bg-white border-b border-gray-200 z-50 shadow-sm">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex justify-between items-center lg:justify-between">
           {/* Menu Mobile - Gauche sur mobile uniquement */}
           <button 
-            className="lg:hidden text-[#004E7C] p-2 flex-shrink-0"
+            className="lg:hidden text-[#004E7C] p-2 flex-shrink-0 hover:bg-gray-50 rounded-md transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
           {/* Logo - Centré sur mobile, à gauche sur desktop */}
@@ -31,7 +32,7 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             <img 
               src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
               alt="PiscinePourTous Logo" 
-              className="h-12 sm:h-16 w-auto"
+              className="h-10 sm:h-12 lg:h-16 w-auto"
             />
           </div>
           
@@ -69,42 +70,42 @@ const Header = ({ scrollToSection }: HeaderProps) => {
 
       {/* Menu Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t shadow-lg">
+        <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
           <nav className="container mx-auto px-3 sm:px-4 py-4 space-y-3">
             <button 
               onClick={() => handleMenuClick('accueil')} 
-              className="block w-full text-left py-2 text-[#004E7C] hover:text-[#00AEEF] font-medium"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
             >
               Accueil
             </button>
             <button 
               onClick={() => handleMenuClick('apropos')} 
-              className="block w-full text-left py-2 text-[#004E7C] hover:text-[#00AEEF] font-medium"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
             >
               À propos
             </button>
             <button 
               onClick={() => handleMenuClick('services')} 
-              className="block w-full text-left py-2 text-[#004E7C] hover:text-[#00AEEF] font-medium"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
             >
               Services
             </button>
             <button 
               onClick={() => handleMenuClick('realisations')} 
-              className="block w-full text-left py-2 text-[#004E7C] hover:text-[#00AEEF] font-medium"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
             >
               Réalisations
             </button>
             <button 
               onClick={() => handleMenuClick('contact')} 
-              className="block w-full text-left py-2 text-[#004E7C] hover:text-[#00AEEF] font-medium"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
             >
               Contact
             </button>
-            <div className="pt-2">
+            <div className="pt-2 px-2">
               <Button 
                 onClick={() => handleMenuClick('contact')} 
-                className="w-full bg-[#00AEEF] hover:bg-[#004E7C] text-white"
+                className="w-full bg-[#00AEEF] hover:bg-[#004E7C] text-white py-3"
               >
                 Demander un devis gratuit
               </Button>
