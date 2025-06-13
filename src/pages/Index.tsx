@@ -29,6 +29,7 @@ import {
   UserCheck,
   Settings
 } from "lucide-react";
+import CookieBanner from "@/components/CookieBanner";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -789,6 +790,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Cookie Banner */}
+      <CookieBanner />
     </div>
   );
 };
