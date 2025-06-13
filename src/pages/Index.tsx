@@ -429,24 +429,30 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20 p-8 rounded-lg">
-            <h4 className="text-2xl font-semibold text-[#004E7C] mb-8 text-center">Nos Valeurs</h4>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20">
+            <div className="text-center mb-8">
+              <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Nos Valeurs</h4>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Les principes qui guident notre travail au quotidien
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {valeurs.map((valeur, index) => (
                 <div key={index} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 hover:shadow-md transition-all duration-300 hover:bg-white/80">
                   <div className="flex flex-col items-center text-center">
-                    <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-3 mb-4">
+                    <div className="bg-gradient-to-br from-[#00AEEF]/10 to-[#A0E7E5]/20 rounded-full p-4 mb-4">
                       {valeur.icon}
                     </div>
-                    <h5 className="text-lg font-semibold text-[#004E7C] mb-3">{valeur.title}</h5>
-                    <p className="text-sm text-gray-600 leading-relaxed">{valeur.description}</p>
+                    <h5 className="text-xl font-semibold text-[#004E7C] mb-3">{valeur.title}</h5>
+                    <p className="text-gray-600 leading-relaxed">{valeur.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20">
+          <div className="bg-gradient-to-r from-[#A0E7E5]/10 via-white to-[#F4EBD0]/30 rounded-2xl p-8 shadow-lg border border-[#A0E7E5]/20 mt-12">
             <div className="text-center mb-8">
               <h4 className="text-3xl font-bold text-[#004E7C] mb-4">Pourquoi nous faire confiance ?</h4>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
