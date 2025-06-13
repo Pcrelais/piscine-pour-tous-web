@@ -837,9 +837,20 @@ const Index = () => {
             <p className="mt-2">
               Crédits visuels : Réalisations PiscinePourTous, CANVA, photos clients avec autorisation
             </p>
-            <p className="mt-2">
-              🍪 Ce site utilise des cookies pour améliorer votre expérience de navigation.
-            </p>
+            <div className="mt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <p>🍪 Ce site utilise des cookies pour améliorer votre expérience de navigation.</p>
+              <Button 
+                variant="link" 
+                onClick={() => {
+                  const element = document.createElement('a');
+                  element.href = '/mentions-legales';
+                  element.click();
+                }}
+                className="text-[#A0E7E5] hover:text-white underline text-sm p-0 h-auto"
+              >
+                ⚖️ Mentions légales & Politique de confidentialité
+              </Button>
+            </div>
           </div>
         </div>
       </footer>
