@@ -373,7 +373,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h3 className="text-2xl font-semibold text-[#004E7C] mb-6">Qui sommes-nous ?</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -387,19 +387,34 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20 p-8 rounded-lg">
-              <h4 className="text-xl font-semibold text-[#004E7C] mb-6">Nos Valeurs</h4>
-              <div className="space-y-4">
-                {valeurs.map((valeur, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    {valeur.icon}
-                    <div>
-                      <h5 className="font-semibold text-[#004E7C]">{valeur.title}</h5>
-                      <p className="text-sm text-gray-600">{valeur.description}</p>
-                    </div>
-                  </div>
-                ))}
+            {/* Image ajoutée pour illustrer la section à propos */}
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1524230572899-a752b3835840?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Équipe PiscinePourTous au travail"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#004E7C]/10 to-transparent"></div>
               </div>
+              {/* Effet décoratif */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#00AEEF]/20 rounded-full blur-xl"></div>
+              <div className="absolute -top-4 -left-4 w-32 h-32 bg-[#A0E7E5]/30 rounded-full blur-xl"></div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20 p-8 rounded-lg">
+            <h4 className="text-xl font-semibold text-[#004E7C] mb-6">Nos Valeurs</h4>
+            <div className="space-y-4">
+              {valeurs.map((valeur, index) => (
+                <div key={index} className="flex items-start space-x-3">
+                  {valeur.icon}
+                  <div>
+                    <h5 className="font-semibold text-[#004E7C]">{valeur.title}</h5>
+                    <p className="text-sm text-gray-600">{valeur.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
