@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { 
   Phone, 
   Mail, 
@@ -47,6 +53,16 @@ const Index = () => {
     console.log('Form submitted:', formData);
     alert('Merci pour votre demande ! Nous vous recontacterons rapidement.');
   };
+
+  const heroSlides = [
+    {
+      image: "/lovable-uploads/8f07b898-1bc3-4f84-844f-0e7d05451f63.png",
+      title: "Votre piscine, notre métier",
+      subtitle: "Un chantier maîtrisé, une piscine pour tous les budgets",
+      description: "Chez PiscinePourTous, nous vous accompagnons de A à Z dans la pose de votre piscine en kit. Que vous rêviez d'une piscine enterrée ou semi-enterrée, notre équipe met tout en œuvre pour un chantier maîtrisé, rapide et économique.",
+      highlight: "Profitez d'un projet personnalisé adapté à votre terrain, vos envies… et votre budget."
+    }
+  ];
 
   const services = [
     {
@@ -208,60 +224,90 @@ const Index = () => {
         )}
       </header>
 
-      {/* Section Accueil */}
+      {/* Section Accueil avec Slider */}
       <section id="accueil" className="pt-20 pb-16 bg-gradient-to-br from-[#F5F5F5] to-[#A0E7E5]/20">
         <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-[#004E7C] mb-4">
-              Votre piscine, notre métier
-            </h1>
-            <p className="text-2xl text-[#00AEEF] font-semibold mb-6">
-              Un chantier maîtrisé, une piscine pour tous les budgets
-            </p>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Chez PiscinePourTous, nous vous accompagnons de A à Z dans la pose de votre piscine en kit. 
-              Que vous rêviez d'une piscine enterrée ou semi-enterrée, notre équipe met tout en œuvre pour 
-              un chantier maîtrisé, rapide et économique. Nous vous accompagnons avec passion, du premier 
-              conseil jusqu'au dernier plongeon.
-            </p>
-            <p className="text-lg text-[#004E7C] mb-8 font-medium">
-              Profitez d'un projet personnalisé adapté à votre terrain, vos envies… et votre budget.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button 
-                size="lg" 
-                onClick={() => scrollToSection('contact')}
-                className="bg-[#00AEEF] hover:bg-[#004E7C] text-white text-lg px-8 py-3"
-              >
-                Demander un devis gratuit
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                onClick={() => scrollToSection('realisations')}
-                className="text-[#004E7C] border-[#004E7C] hover:bg-[#004E7C] hover:text-white text-lg px-8 py-3"
-              >
-                Voir nos réalisations
-              </Button>
-            </div>
+          <Carousel className="w-full max-w-6xl mx-auto">
+            <CarouselContent>
+              {heroSlides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    {/* Contenu textuel */}
+                    <div className="text-center lg:text-left space-y-6">
+                      <div>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#004E7C] mb-4">
+                          {slide.title}
+                        </h1>
+                        <p className="text-xl md:text-2xl text-[#00AEEF] font-semibold mb-6">
+                          {slide.subtitle}
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <p className="text-lg text-gray-600 leading-relaxed">
+                          {slide.description}
+                        </p>
+                        <p className="text-lg text-[#004E7C] font-medium">
+                          {slide.highlight}
+                        </p>
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <Button 
+                          size="lg" 
+                          onClick={() => scrollToSection('contact')}
+                          className="bg-[#00AEEF] hover:bg-[#004E7C] text-white text-lg px-8 py-3"
+                        >
+                          Demander un devis gratuit
+                        </Button>
+                        <Button 
+                          size="lg" 
+                          variant="outline"
+                          onClick={() => scrollToSection('realisations')}
+                          className="text-[#004E7C] border-[#004E7C] hover:bg-[#004E7C] hover:text-white text-lg px-8 py-3"
+                        >
+                          Voir nos réalisations
+                        </Button>
+                      </div>
 
-            {/* Zone d'intervention et garanties */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="flex items-center justify-center space-x-2 text-[#004E7C]">
-                <MapPin className="h-5 w-5 text-[#00AEEF]" />
-                <span className="font-medium">Zone : Isère / Savoie</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2 text-[#004E7C]">
-                <CheckCircle className="h-5 w-5 text-[#00AEEF]" />
-                <span className="font-medium">Pose rapide</span>
-              </div>
-              <div className="flex items-center justify-center space-x-2 text-[#004E7C]">
-                <Shield className="h-5 w-5 text-[#00AEEF]" />
-                <span className="font-medium">Garantie qualité</span>
-              </div>
-            </div>
-          </div>
+                      {/* Zone d'intervention et garanties */}
+                      <div className="grid md:grid-cols-3 gap-4 pt-6">
+                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
+                          <MapPin className="h-5 w-5 text-[#00AEEF]" />
+                          <span className="font-medium">Zone : Isère / Savoie</span>
+                        </div>
+                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
+                          <CheckCircle className="h-5 w-5 text-[#00AEEF]" />
+                          <span className="font-medium">Pose rapide</span>
+                        </div>
+                        <div className="flex items-center justify-center lg:justify-start space-x-2 text-[#004E7C]">
+                          <Shield className="h-5 w-5 text-[#00AEEF]" />
+                          <span className="font-medium">Garantie qualité</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Image */}
+                    <div className="relative">
+                      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                        <img 
+                          src={slide.image} 
+                          alt="Piscine cristalline"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#004E7C]/20 to-transparent"></div>
+                      </div>
+                      {/* Effet décoratif */}
+                      <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#00AEEF]/20 rounded-full blur-xl"></div>
+                      <div className="absolute -top-4 -left-4 w-32 h-32 bg-[#A0E7E5]/30 rounded-full blur-xl"></div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden lg:flex" />
+            <CarouselNext className="hidden lg:flex" />
+          </Carousel>
 
           {/* Aperçu Services */}
           <div className="grid md:grid-cols-3 gap-8 mt-16">
@@ -616,7 +662,7 @@ const Index = () => {
                     <MapPin className="h-5 w-5 text-[#00AEEF]" />
                     <div>
                       <p className="font-semibold text-[#004E7C]">Zone d'intervention</p>
-                      <p className="text-gray-600">Isère / Savoie</p>
+                      <p className="text-gray-600">Isère & Savoie</p>
                     </div>
                   </div>
                 </CardContent>
