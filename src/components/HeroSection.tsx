@@ -30,12 +30,12 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
           {/* Description */}
           <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-10 w-full">
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-4xl mx-auto px-2">
-              Chez PiscinePourTous, nous vous accompagnons de A à Z dans la pose de votre piscine en kit. 
+              Chez PiscinePourTous, nous vous accompagnons de la conception jusqu'au dernier plongeon. 
               Que vous rêviez d'une piscine enterrée ou semi-enterrée, notre équipe met tout en œuvre 
               pour un chantier maîtrisé, rapide et économique.
             </p>
             
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-[#A0E7E5] max-w-3xl mx-auto px-2">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#A0E7E5] max-w-3xl mx-auto px-2 drop-shadow-lg">
               Profitez d'un projet personnalisé adapté à votre terrain, vos envies… et votre budget.
             </p>
           </div>
