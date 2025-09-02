@@ -51,9 +51,10 @@ const AboutSection = () => {
             Une passion pour la piscine, un engagement pour vos projets
           </p>
           <p className="text-gray-600 leading-relaxed">
-            Chez PiscinePourTous, nous croyons que chacun mérite de profiter d'un espace de détente chez soi, 
-            sans compromis sur la qualité ni le budget. C'est cette conviction qui nous pousse chaque jour à 
-            proposer des solutions accessibles, fiables et esthétiques pour tous vos projets de piscines en kit.
+            Chez PiscinePourTous, nous mettons notre savoir-faire au service de tous les projets de construction de piscine, 
+            du petit bassin citadin à la grande piscine familiale, toujours avec la même exigence de qualité. 
+            C'est cette conviction qui nous pousse chaque jour à proposer des solutions accessibles, fiables et esthétiques 
+            pour tous vos projets de piscines.
           </p>
         </div>
 
