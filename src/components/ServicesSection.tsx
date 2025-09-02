@@ -18,12 +18,11 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">Fourniture et pose de piscines en kit</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">Construction de votre piscine de A à Z</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <CardDescription className="text-base leading-relaxed">
-                Nous installons des piscines en kit enterrées ou hors-sol, conçues pour durer et faciles à entretenir 
-                (volet roulant et bloc de filtration).
+                Construction de piscines enterrées et semi-enterrées.
               </CardDescription>
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Notre promesse : un chantier rapide, propre, et un rendu professionnel à prix maîtrisé.

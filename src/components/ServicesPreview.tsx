@@ -1,13 +1,18 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Droplets, Users, Wrench } from "lucide-react";
 
-const ServicesPreview = () => {
+interface ServicesPreviewProps {
+  scrollToSection?: (sectionId: string) => void;
+}
+
+const ServicesPreview = ({ scrollToSection }: ServicesPreviewProps) => {
   const services = [
     {
       icon: <Droplets className="h-8 w-8 text-[#00AEEF]" />,
-      title: "Fourniture et Pose",
-      description: "Installation complète de piscines en kit enterrées ou hors-sol avec volet roulant et bloc de filtration."
+      title: "Construction de votre piscine de A à Z",
+      description: "Construction de piscines enterrées et semi-enterrées."
     },
     {
       icon: <Users className="h-8 w-8 text-[#00AEEF]" />,
@@ -37,9 +42,17 @@ const ServicesPreview = () => {
                 <CardTitle className="text-xl text-[#004E7C]">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base text-gray-600">
+                <CardDescription className="text-base text-gray-600 mb-4">
                   {service.description}
                 </CardDescription>
+                {index === 0 && scrollToSection && (
+                  <Button 
+                    onClick={() => scrollToSection('services')}
+                    className="bg-[#00AEEF] hover:bg-[#004E7C] text-white"
+                  >
+                    En savoir plus
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
