@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Droplets, Users, Wrench, Shield } from "lucide-react";
+import { Droplets, Users, Wrench, Shield, ShoppingCart } from "lucide-react";
 
 const ServicesSection =  () => {
   return (
@@ -14,7 +14,7 @@ const ServicesSection =  () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
@@ -75,6 +75,26 @@ const ServicesSection =  () => {
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Prolongez la vie de votre piscine avec un entretien fiable et régulier.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
+            <CardHeader className="text-center">
+              <ShoppingCart className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
+              <CardTitle className="text-2xl text-[#004E7C]">Vente de marchandises liées au monde de la piscine</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <CardDescription className="text-base leading-relaxed">
+                Produits d'entretien, matériel de nettoyage, équipement de confort et de sécurité, …
+              </CardDescription>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Produits chimiques pour l'entretien</li>
+                <li>• Matériel de nettoyage et accessoires</li>
+                <li>• Équipements de confort et de sécurité</li>
+              </ul>
+              <p className="text-sm text-[#004E7C] font-medium">
+                Tout ce dont vous avez besoin pour profiter pleinement de votre piscine.
               </p>
             </CardContent>
           </Card>
