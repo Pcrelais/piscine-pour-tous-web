@@ -95,11 +95,20 @@ const ServicesSection =  () => {
 
         <div className="text-center p-8 bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm rounded-lg border border-white/40">
           <h3 className="text-2xl font-semibold text-[#00AEEF] mb-6">✅ Pourquoi choisir PiscinePourTous ?</h3>
-          <ul className="text-lg text-[#004E7C] space-y-3 max-w-md mx-auto">
-            <li>• Adaptés à tous les budgets</li>
-            <li>• Une expertise technique</li>
-            <li>• Une équipe à votre écoute</li>
-          </ul>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center">
+              <Shield className="h-8 w-8 text-[#00AEEF] mb-2" />
+              <p className="font-semibold text-[#004E7C]">Adaptés à tous les budgets</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Wrench className="h-8 w-8 text-[#00AEEF] mb-2" />
+              <p className="font-semibold text-[#004E7C]">Une expertise technique</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Users className="h-8 w-8 text-[#00AEEF] mb-2" />
+              <p className="font-semibold text-[#004E7C]">Une équipe à votre écoute</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
