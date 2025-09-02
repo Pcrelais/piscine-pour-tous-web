@@ -8,10 +8,6 @@ const ServicesSection =  () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#004E7C] mb-6">Nos Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Des piscines en kit, un accompagnement sur mesure. Nous ne vous proposons pas seulement une piscine : 
-            nous vous accompagnons pour réaliser un projet clair, bien encadré et adapté à votre budget.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
