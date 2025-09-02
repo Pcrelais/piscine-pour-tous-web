@@ -45,7 +45,7 @@ const ServicesPreview = ({ scrollToSection }: ServicesPreviewProps) => {
                 <CardDescription className="text-base text-gray-600 mb-4 flex-grow">
                   {service.description}
                 </CardDescription>
-                {(index === 0 || index === 1) && scrollToSection && (
+                {(index === 0 || index === 1 || index === 2) && scrollToSection && (
                   <Button 
                     onClick={() => scrollToSection('services')}
                     className="bg-[#00AEEF] hover:bg-[#004E7C] text-white mt-auto"
