@@ -28,12 +28,12 @@ const AboutSection = () => {
     {
       icon: <Award className="h-8 w-8 text-[#00AEEF]" />,
       title: "Expertise terrain",
-      description: "Chaque projet est unique, nous adaptons la pose à votre environnement"
+      description: "Chaque projet est unique, nous adaptons la construction à votre environnement"
     },
     {
       icon: <UserCheck className="h-8 w-8 text-[#00AEEF]" />,
       title: "Conseils personnalisés",
-      description: "Pose complète ou accompagnement, nous sommes là pour vous guider"
+      description: "que vous souhaitiez construire vous-même ou faire appel à nos services complets, nous sommes là pour vous guider"
     },
     {
       icon: <Settings className="h-8 w-8 text-[#00AEEF]" />,
