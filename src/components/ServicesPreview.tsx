@@ -34,21 +34,21 @@ const ServicesPreview = ({ scrollToSection }: ServicesPreviewProps) => {
             Des solutions pour tous les projets
           </h3>
           {services.map((service, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm border-[#A0E7E5]">
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white/80 backdrop-blur-sm border-[#A0E7E5] flex flex-col h-full">
               <CardHeader>
                 <div className="flex justify-center mb-4">
                   {service.icon}
                 </div>
                 <CardTitle className="text-xl text-[#004E7C]">{service.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base text-gray-600 mb-4">
+              <CardContent className="flex flex-col flex-grow">
+                <CardDescription className="text-base text-gray-600 mb-4 flex-grow">
                   {service.description}
                 </CardDescription>
                 {(index === 0 || index === 1) && scrollToSection && (
                   <Button 
                     onClick={() => scrollToSection('services')}
-                    className="bg-[#00AEEF] hover:bg-[#004E7C] text-white"
+                    className="bg-[#00AEEF] hover:bg-[#004E7C] text-white mt-auto"
                   >
                     En savoir plus
                   </Button>
