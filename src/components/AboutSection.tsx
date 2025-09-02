@@ -62,13 +62,13 @@ const AboutSection = () => {
           <div>
             <h3 className="text-2xl font-semibold text-[#004E7C] mb-6">Qui sommes-nous ?</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Nous sommes une entreprise spécialisée dans la pose de piscines en kit, conçue pour offrir 
-              à nos clients un accompagnement professionnel et transparent. Grâce à notre expérience terrain 
-              et notre exigence technique, nous assurons un chantier bien maîtrisé, de la préparation à la mise en eau.
+              Nous sommes une entreprise spécialisée dans la construction de piscines, conçue pour offrir 
+              à nos clients un accompagnement professionnel. Grâce à notre expérience terrain 
+              et notre exigence technique, nous assurons un chantier bien maîtrisé, de la conception à la mise en eau.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Nous intervenons aussi bien auprès des particuliers que des résidences secondaires, avec un seul 
-              objectif : vous livrer une piscine qui vous ressemble, sans mauvaise surprise.
+              Qu'il s'agisse d'un chantier compact en milieu urbain ou d'une grande installation sur terrain vaste, 
+              notre objectif reste le même : vous livrer une piscine qui vous ressemble, sans mauvaise surprise.
             </p>
           </div>
 
