@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Droplets, Users, Wrench } from "lucide-react";
+import { Droplets, Users, Wrench, ShoppingCart } from "lucide-react";
 
 interface ServicesPreviewProps {
   scrollToSection?: (sectionId: string) => void;
@@ -23,13 +23,18 @@ const ServicesPreview = ({ scrollToSection }: ServicesPreviewProps) => {
       icon: <Wrench className="h-8 w-8 text-[#00AEEF]" />,
       title: "Entretien & Rénovation",
       description: "Mise en service, hivernage, vérification des équipements et rénovation de piscines existantes."
+    },
+    {
+      icon: <ShoppingCart className="h-8 w-8 text-[#00AEEF]" />,
+      title: "Vente de marchandises liées au monde de la piscine",
+      description: "Produits d'entretien, matériel de nettoyage, équipement de confort et de sécurité, …"
     }
   ];
 
   return (
     <section className="py-16 bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <h3 className="col-span-full text-3xl font-bold text-[#004E7C] text-center mb-8">
             Des solutions pour tous les projets
           </h3>
@@ -45,7 +50,7 @@ const ServicesPreview = ({ scrollToSection }: ServicesPreviewProps) => {
                 <CardDescription className="text-base text-gray-600 mb-4 flex-grow">
                   {service.description}
                 </CardDescription>
-                {(index === 0 || index === 1 || index === 2) && scrollToSection && (
+                {(index === 0 || index === 1 || index === 2 || index === 3) && scrollToSection && (
                   <Button 
                     onClick={() => scrollToSection('services')}
                     className="bg-[#00AEEF] hover:bg-[#004E7C] text-white mt-auto"
