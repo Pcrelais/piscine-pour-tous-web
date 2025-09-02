@@ -14,19 +14,19 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">Construction de votre piscine de A à Z</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">💧 Construction de votre piscine de A à Z</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <CardDescription className="text-base leading-relaxed">
-                Construction de piscines enterrées et semi-enterrées.
-              </CardDescription>
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Notre promesse : un chantier rapide, propre, et un rendu professionnel à prix maîtrisé.
+              </p>
+              <p className="text-base leading-relaxed text-[#004E7C] font-medium">
+                Ce qui est inclus :
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Étude de faisabilité sur votre terrain</li>
                 <li>• Terrassement, installation et mise en eau</li>
-                <li>• Conseils d'entretien de votre bassin</li>
+                <li>• Entretien de votre bassin</li>
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Idéal pour ceux qui veulent un résultat clé-en-main, sans stress.
@@ -41,13 +41,13 @@ const ServicesSection =  () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <CardDescription className="text-base leading-relaxed">
-                Vous souhaitez poser vous-même votre piscine en kit, mais avez besoin d'un coup de pouce ? 
-                Nous proposons un accompagnement technique personnalisé.
+                Vous souhaitez construire vous-même votre piscine, mais avez besoin d'un coup de pouce ?
+                Nous proposons un accompagnement technique personnalisé, pour vous aider à chaque étape :
               </CardDescription>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Aide à la planification</li>
-                <li>• Astuces de pose et bonnes pratiques</li>
-                <li>• Intervention ponctuelle sur chantier (optionnel)</li>
+                <li>• Astuces de construction et bonnes pratiques</li>
+                <li>• Intervention ponctuelle sur chantier</li>
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Pour les particuliers bricoleurs qui veulent rester autonomes, avec la sécurité d'un vrai pro en soutien.
@@ -61,9 +61,6 @@ const ServicesSection =  () => {
               <CardTitle className="text-2xl text-[#004E7C]">Entretien & rénovation</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <CardDescription className="text-base leading-relaxed">
-                Nous proposons également des services pour prolonger la vie de votre piscine.
-              </CardDescription>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Mise en service et hivernage</li>
                 <li>• Vérification des équipements (pompe, filtration, liner)</li>
