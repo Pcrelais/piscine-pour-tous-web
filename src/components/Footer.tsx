@@ -6,8 +6,8 @@ const Footer = () => {
     <footer className="bg-[#004E7C] text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
+          <div className="text-center">
+            <div className="flex justify-center mb-4">
               <img 
                 src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
                 alt="PiscinePourTous Logo" 
