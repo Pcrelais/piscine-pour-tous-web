@@ -22,9 +22,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-blue-200">
-              <li>Vente et pose de piscines</li>
-              <li>Accompagnement technique</li>
-              <li>Entretien & rénovation</li>
+              <li>Vente et construction de piscines</li>
+              <li>Accompagnement à l'auto construction</li>
+              <li>Entretien et rénovation</li>
             </ul>
           </div>
           
