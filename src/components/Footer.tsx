@@ -11,7 +11,7 @@ const Footer = () => {
               <img 
                 src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
                 alt="PiscinePourTous Logo" 
-                className="h-12 w-auto"
+                className="h-20 w-auto"
               />
             </div>
             <p className="text-blue-200">
