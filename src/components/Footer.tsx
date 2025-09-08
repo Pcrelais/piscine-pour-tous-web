@@ -22,9 +22,45 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-blue-200">
-              <li>Vente et construction de piscines</li>
-              <li>Accompagnement à l'auto construction</li>
-              <li>Entretien et rénovation</li>
+              <li>
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('services');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Vente et construction de piscines
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('services');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Accompagnement à l'auto construction
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('services');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Entretien et rénovation
+                </button>
+              </li>
             </ul>
           </div>
           
