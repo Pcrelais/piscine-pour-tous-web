@@ -14,7 +14,7 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">💧 Construction de votre piscine de A à Z</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">Vente et construction de piscines</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm font-semibold text-[#00AEEF]">
@@ -37,7 +37,7 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Users className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto-construction</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto construction</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <CardDescription className="text-base leading-relaxed">
@@ -58,7 +58,7 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <Wrench className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">Entretien & rénovation</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">Entretien et rénovation</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="text-sm text-gray-600 space-y-2">
