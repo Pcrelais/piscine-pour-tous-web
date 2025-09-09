@@ -174,22 +174,6 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 border-white/40">
-              <CardHeader>
-                <CardTitle className="text-xl text-[#004E7C]">Astuce</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600 mb-3">
-                  Pour un devis rapide, n'hésitez pas à nous préciser :
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• Le type de piscine souhaité (enterrée, hors-sol, semi-enterrée)</li>
-                  <li>• Les dimensions approximatives</li>
-                  <li>• Les contraintes de votre terrain (pente, accès, etc.)</li>
-                  <li>• Si vous souhaitez poser vous-même ou faire appel à nos services</li>
-                </ul>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
