@@ -63,6 +63,7 @@ const ServicesSection =  () => {
               <CardTitle className="text-2xl text-[#004E7C]">Entretien et rénovation</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 flex-grow">
+              <div className="h-3"></div>
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Préservez la beauté et la durée de vie de votre piscine avec un entretien professionnel adapté.
               </p>
