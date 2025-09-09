@@ -77,16 +77,21 @@ const ServicesSection =  () => {
           <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
             <CardHeader className="text-center">
               <ShoppingCart className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
-              <CardTitle className="text-2xl text-[#004E7C]">Vente de marchandises liées au monde de la piscine</CardTitle>
+              <CardTitle className="text-2xl text-[#004E7C]">Produits et Accessoires Piscines</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <CardDescription className="text-base leading-relaxed">
-                Produits d'entretien, matériel de nettoyage, équipement de confort et de sécurité, …
-              </CardDescription>
+              <p className="text-sm font-semibold text-[#00AEEF]">
+                Chez PiscinePourTous, nous ne nous contentons pas de construire votre piscine : nous vous accompagnons aussi dans son entretien et son confort au quotidien. C'est pourquoi nous proposons une large gamme de produits et accessoires soigneusement sélectionnés pour leur qualité, leur fiabilité et leur compatibilité avec nos piscines.
+              </p>
+              <p className="text-base leading-relaxed text-[#004E7C] font-medium">
+                Nos produits disponibles à la vente incluent :
+              </p>
               <ul className="text-sm text-gray-600 space-y-2">
-                <li>• Produits chimiques pour l'entretien</li>
-                <li>• Matériel de nettoyage et accessoires</li>
-                <li>• Équipements de confort et de sécurité</li>
+                <li>• Produits d'entretien : chlore, brome, sel, régulateurs de pH, floculants, anticalcaire…</li>
+                <li>• Matériel de nettoyage : balais, robots électriques, aspirateurs manuels, épuisettes, manches télescopiques</li>
+                <li>• Équipements de confort et sécurité : bâches, alarmes, enrouleurs, échelles, douches solaires, volets roulants</li>
+                <li>• Accessoires de bien-être : jets balnéo, éclairages LED, jeux d'eau, fontaines, mobilier de piscine</li>
+                <li>• Petite plomberie et pièces détachées : skimmers, buses, filtres, pompes, raccords…</li>
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Tout ce dont vous avez besoin pour profiter pleinement de votre piscine.
