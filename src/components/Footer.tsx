@@ -93,7 +93,7 @@ const Footer = () => {
           <div>
             <h5 className="font-semibold mb-2">Mentions légales</h5>
             <p className="mb-2">
-              <strong>Éditeur :</strong> PiscinePourTous - Responsable publication : Jacques Gioello
+              <strong>Éditeur :</strong> PiscinePourTous
             </p>
             <p className="mb-2">
               <strong>Adresse :</strong> Longechenal
