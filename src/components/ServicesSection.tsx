@@ -40,10 +40,12 @@ const ServicesSection =  () => {
               <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto construction</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <CardDescription className="text-base leading-relaxed">
+              <p className="text-sm font-semibold text-[#00AEEF]">
                 Vous souhaitez construire vous-même votre piscine, mais avez besoin d'un coup de pouce ?
+              </p>
+              <p className="text-base leading-relaxed text-[#004E7C] font-medium">
                 Nous proposons un accompagnement technique personnalisé, pour vous aider à chaque étape :
-              </CardDescription>
+              </p>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Aide à la planification</li>
                 <li>• Astuces de construction et bonnes pratiques</li>
