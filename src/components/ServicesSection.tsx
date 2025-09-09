@@ -63,6 +63,12 @@ const ServicesSection =  () => {
               <CardTitle className="text-2xl text-[#004E7C]">Entretien et rénovation</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
+              <p className="text-sm font-semibold text-[#00AEEF]">
+                Votre piscine mérite un entretien professionnel pour préserver sa qualité et prolonger sa durée de vie.
+              </p>
+              <p className="text-base leading-relaxed text-[#004E7C] font-medium">
+                Nos services d'entretien et rénovation incluent :
+              </p>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Mise en service et hivernage</li>
                 <li>• Vérification des équipements (pompe, filtration, liner)</li>
