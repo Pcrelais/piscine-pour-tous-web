@@ -61,6 +61,19 @@ const Footer = () => {
                   Entretien et rénovation
                 </button>
               </li>
+              <li>
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('services');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Produits et accessoires piscine
+                </button>
+              </li>
             </ul>
           </div>
           
