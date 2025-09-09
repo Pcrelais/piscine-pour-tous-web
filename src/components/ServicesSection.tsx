@@ -11,12 +11,12 @@ const ServicesSection =  () => {
         </div>
 
         <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
-          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
+          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm flex flex-col">
             <CardHeader className="text-center">
               <Droplets className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
               <CardTitle className="text-2xl text-[#004E7C]">Vente et construction de piscines</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow">
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Notre promesse : un chantier rapide, propre, et un rendu professionnel à prix maîtrisé.
               </p>
@@ -34,12 +34,12 @@ const ServicesSection =  () => {
             </CardContent>
           </Card>
 
-          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
+          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm flex flex-col">
             <CardHeader className="text-center">
               <Users className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
               <CardTitle className="text-2xl text-[#004E7C]">Accompagnement à l'auto construction</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow">
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Vous souhaitez construire vous-même votre piscine, mais avez besoin d'un coup de pouce ?
               </p>
@@ -57,12 +57,12 @@ const ServicesSection =  () => {
             </CardContent>
           </Card>
 
-          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
+          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm flex flex-col">
             <CardHeader className="text-center">
               <Wrench className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
               <CardTitle className="text-2xl text-[#004E7C]">Entretien et rénovation</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow">
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Votre piscine mérite un entretien professionnel pour préserver sa qualité et prolonger sa durée de vie.
               </p>
@@ -80,12 +80,12 @@ const ServicesSection =  () => {
             </CardContent>
           </Card>
 
-          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm">
+          <Card className="h-full hover:shadow-xl transition-shadow bg-gradient-to-br from-[#E0F2FE] via-[#F0F9FF] to-[#A0E7E5]/40 backdrop-blur-sm flex flex-col">
             <CardHeader className="text-center">
               <ShoppingCart className="h-12 w-12 text-[#00AEEF] mx-auto mb-4" />
               <CardTitle className="text-2xl text-[#004E7C]">Produits et Accessoires Piscines</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow">
               <p className="text-sm font-semibold text-[#00AEEF]">
                 Chez PiscinePourTous, nous ne nous contentons pas de construire votre piscine : nous vous accompagnons aussi dans son entretien et son confort au quotidien. C'est pourquoi nous proposons une large gamme de produits et accessoires soigneusement sélectionnés pour leur qualité, leur fiabilité et leur compatibilité avec nos piscines.
               </p>
