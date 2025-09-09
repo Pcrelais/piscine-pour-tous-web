@@ -2,38 +2,28 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Scale, Shield, Cookie, ExternalLink, Camera, Database } from "lucide-react";
+import { Scale, Shield, Cookie, ExternalLink, Camera, Database } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Header from "@/components/Header";
 
 const MentionsLegales = () => {
   const navigate = useNavigate();
 
+  const scrollToSection = (sectionId: string) => {
+    navigate('/');
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-white border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              onClick={() => navigate('/')}
-              className="flex items-center space-x-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              <span>Retour à l'accueil</span>
-            </Button>
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
-                alt="PiscinePourTous Logo" 
-                className="h-12 w-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-12">
+      <Header scrollToSection={scrollToSection} />
+      
+      <div className="container mx-auto px-4 py-12 pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
