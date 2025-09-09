@@ -24,7 +24,7 @@ const MentionsLegales = () => {
             </Button>
             <div className="flex items-center space-x-3">
               <img 
-                src="/lovable-uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
+                src="/uploads/ea68e63d-bb2b-410f-8209-ed0611a8db57.png" 
                 alt="PiscinePourTous Logo" 
                 className="h-12 w-auto"
               />
