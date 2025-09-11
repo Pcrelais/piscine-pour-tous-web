@@ -160,7 +160,7 @@ const ContactSection = () => {
                   <Clock className="h-5 w-5 text-[#00AEEF]" />
                   <div>
                     <p className="font-semibold text-[#004E7C]">Horaires</p>
-                    <p className="text-gray-600">Lundi au ven - 7h à 19h</p>
+                    <p className="text-gray-600">Lundi au vendredi - 7h à 19h</p>
                   </div>
                 </div>
                 
