@@ -49,7 +49,7 @@ const ServicesSection =  () => {
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Aide à la planification</li>
                 <li>• Astuces de construction et bonnes pratiques</li>
-                <li>• Intervention ponctuelle sur chantier</li>
+                <li>• Interventions ponctuelles sur chantier</li>
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Pour les particuliers bricoleurs qui veulent rester autonomes, avec la sécurité d'un vrai pro en soutien.
