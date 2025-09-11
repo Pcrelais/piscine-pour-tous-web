@@ -33,7 +33,7 @@ const AboutSection = () => {
     {
       icon: <UserCheck className="h-8 w-8 text-[#00AEEF]" />,
       title: "Conseils personnalisés",
-      description: "que vous souhaitiez construire vous-même ou faire appel à nos services complets, nous sommes là pour vous guider"
+      description: "Que vous souhaitiez construire vous-même ou faire appel à nos services complets, nous sommes là pour vous guider"
     },
     {
       icon: <Settings className="h-8 w-8 text-[#00AEEF]" />,
