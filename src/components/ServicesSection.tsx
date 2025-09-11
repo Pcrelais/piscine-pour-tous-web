@@ -72,8 +72,8 @@ const ServicesSection =  () => {
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
                 <li>• Mise en service et hivernage</li>
-                <li>• Vérification des équipements (pompe, filtration, liner)</li>
-                <li>• Rénovation de piscines existantes (liner, margelles, filtration)</li>
+                <li>• Vérification des équipements</li>
+                <li>• Rénovation de piscines existantes</li>
               </ul>
               <p className="text-sm text-[#004E7C] font-medium">
                 Prolongez la vie de votre piscine avec un entretien fiable et régulier.
