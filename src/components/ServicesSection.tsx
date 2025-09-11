@@ -18,7 +18,7 @@ const ServicesSection =  () => {
             </CardHeader>
             <CardContent className="space-y-4 flex-grow">
               <p className="text-sm font-semibold text-[#00AEEF]">
-                Notre promesse : un chantier rapide, propre, et un rendu professionnel à prix maîtrisé.
+                Notre promesse : un chantier de qualité et un prix maîtrisé
               </p>
               <p className="text-base leading-relaxed text-[#004E7C] font-medium">
                 Ce qui est inclus :
