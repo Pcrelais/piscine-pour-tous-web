@@ -136,7 +136,7 @@ const BlogDashboard = () => {
       
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">Mes Articles</h1>
+          <h1 className="text-4xl font-bold text-primary mb-6">Mes Articles</h1>
           
           {/* Boutons principaux */}
           <div className="flex flex-wrap gap-3">
