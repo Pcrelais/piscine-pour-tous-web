@@ -115,7 +115,7 @@ const Blog = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#004E7C] to-[#00AEEF] text-white py-20">
+      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
@@ -133,7 +133,7 @@ const Blog = () => {
                 placeholder="Rechercher un article..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 py-6 text-lg bg-white/10 backdrop-blur-md border-white/20 text-white placeholder:text-white/60"
+                className="pl-12 py-6 text-lg bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/70 focus:bg-white/20 transition-all"
               />
             </div>
           </div>
@@ -146,8 +146,7 @@ const Blog = () => {
           <div className="flex flex-wrap gap-2">
             <Button
               onClick={() => setSelectedCategory(null)}
-              variant={selectedCategory === null ? "default" : "outline"}
-              className={selectedCategory === null ? "bg-[#00AEEF]" : ""}
+              variant={selectedCategory === null ? "secondary" : "outline"}
             >
               Tous
             </Button>
@@ -155,8 +154,7 @@ const Blog = () => {
               <Button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={selectedCategory === category ? "bg-[#00AEEF]" : ""}
+                variant={selectedCategory === category ? "secondary" : "outline"}
               >
                 {category}
               </Button>
@@ -166,7 +164,7 @@ const Blog = () => {
           {user ? (
             <Button
               onClick={() => navigate("/blog/dashboard")}
-              className="bg-[#004E7C] hover:bg-[#003A5C]"
+              variant="default"
             >
               Mon tableau de bord
             </Button>
@@ -174,7 +172,6 @@ const Blog = () => {
             <Button
               onClick={() => navigate("/auth")}
               variant="outline"
-              className="border-[#004E7C] text-[#004E7C]"
             >
               Se connecter pour écrire
             </Button>
@@ -193,7 +190,7 @@ const Blog = () => {
             {user && !searchTerm && !selectedCategory && (
               <Button
                 onClick={() => navigate("/blog/new")}
-                className="bg-[#00AEEF] hover:bg-[#0095CC]"
+                variant="secondary"
               >
                 Écrire le premier article
               </Button>
@@ -218,7 +215,7 @@ const Blog = () => {
                     />
                   </div>
                 ) : (
-                  <div className="h-48 bg-gradient-to-br from-[#004E7C] to-[#00AEEF] flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                     <BookOpen className="h-16 w-16 text-white opacity-50" />
                   </div>
                 )}
@@ -226,13 +223,13 @@ const Blog = () => {
                 <div className="p-6">
                   {/* Category Badge */}
                   {post.category && (
-                    <Badge className="mb-3 bg-[#00AEEF] hover:bg-[#0095CC]">
+                    <Badge variant="secondary" className="mb-3">
                       {post.category}
                     </Badge>
                   )}
 
                   {/* Title */}
-                  <h2 className="text-2xl font-bold text-[#004E7C] mb-3 group-hover:text-[#00AEEF] transition-colors line-clamp-2">
+                  <h2 className="text-2xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors line-clamp-2">
                     {post.title}
                   </h2>
 
