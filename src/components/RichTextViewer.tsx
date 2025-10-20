@@ -1,5 +1,3 @@
-import ReactMarkdown from 'react-markdown';
-
 interface RichTextViewerProps {
   content: string;
   className?: string;
@@ -7,9 +5,10 @@ interface RichTextViewerProps {
 
 const RichTextViewer = ({ content, className = "" }: RichTextViewerProps) => {
   return (
-    <div className={`prose prose-lg max-w-none ${className}`}>
-      <ReactMarkdown>{content}</ReactMarkdown>
-    </div>
+    <div 
+      className={`prose prose-lg max-w-none ${className}`}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   );
 };
 

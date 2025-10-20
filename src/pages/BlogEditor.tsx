@@ -4,10 +4,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Save, Image as ImageIcon, Loader2, Upload, X, Bold, Italic, List, ListOrdered, Link as LinkIcon, Heading1, Heading2, Quote } from "lucide-react";
+import { ArrowLeft, Save, Image as ImageIcon, Loader2, Upload, X } from "lucide-react";
+import WysiwygEditor from "@/components/WysiwygEditor";
 
 const CATEGORIES = [
   "Entretien",
@@ -34,7 +34,6 @@ const BlogEditor = () => {
   const [published, setPublished] = useState(false);
   const [user, setUser] = useState<any>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -52,8 +51,9 @@ const BlogEditor = () => {
   }, [id, user]);
 
   useEffect(() => {
-    // Auto-calculate read time based on content
-    const words = content.split(/\s+/).length;
+    // Auto-calculate read time based on content (strip HTML tags)
+    const text = content.replace(/<[^>]*>/g, '');
+    const words = text.split(/\s+/).filter(word => word.length > 0).length;
     const calculatedTime = Math.max(1, Math.ceil(words / 200));
     setReadTime(calculatedTime);
   }, [content]);
@@ -204,35 +204,6 @@ const BlogEditor = () => {
     }
   };
 
-  const insertFormatting = (before: string, after: string = "") => {
-    const textarea = contentRef.current;
-    if (!textarea) return;
-
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const selectedText = content.substring(start, end);
-    const newText = content.substring(0, start) + before + selectedText + after + content.substring(end);
-    
-    setContent(newText);
-    
-    setTimeout(() => {
-      textarea.focus();
-      const newCursorPos = start + before.length + selectedText.length + after.length;
-      textarea.setSelectionRange(newCursorPos, newCursorPos);
-    }, 0);
-  };
-
-  const formatButtons = [
-    { icon: Heading1, label: "Titre 1", action: () => insertFormatting("# ", "\n") },
-    { icon: Heading2, label: "Titre 2", action: () => insertFormatting("## ", "\n") },
-    { icon: Bold, label: "Gras", action: () => insertFormatting("**", "**") },
-    { icon: Italic, label: "Italique", action: () => insertFormatting("_", "_") },
-    { icon: List, label: "Liste", action: () => insertFormatting("\n- ", "") },
-    { icon: ListOrdered, label: "Liste numérotée", action: () => insertFormatting("\n1. ", "") },
-    { icon: Quote, label: "Citation", action: () => insertFormatting("\n> ", "") },
-    { icon: LinkIcon, label: "Lien", action: () => insertFormatting("[", "](url)") },
-  ];
-
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
@@ -319,40 +290,12 @@ const BlogEditor = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-2">
-                <Label className="text-lg font-semibold">
-                  Contenu de l'article *
-                </Label>
-                <span className="text-sm text-muted-foreground">
-                  Markdown supporté
-                </span>
-              </div>
-              
-              {/* Barre d'outils de formatage */}
-              <div className="flex flex-wrap gap-1 p-2 bg-muted rounded-t-lg border border-b-0">
-                {formatButtons.map((btn, idx) => (
-                  <Button
-                    key={idx}
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={btn.action}
-                    title={btn.label}
-                    className="h-8 w-8 p-0"
-                  >
-                    <btn.icon className="h-4 w-4" />
-                  </Button>
-                ))}
-              </div>
-
-              <Textarea
-                ref={contentRef}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                required
-                placeholder="Écrivez votre article ici... Utilisez Markdown pour le formatage."
-                rows={20}
-                className="rounded-t-none font-mono text-sm resize-y"
+              <Label className="text-lg font-semibold mb-2 block">
+                Contenu de l'article *
+              </Label>
+              <WysiwygEditor
+                content={content}
+                onChange={setContent}
               />
               <p className="text-sm text-muted-foreground mt-2">
                 Temps de lecture estimé : {readTime} minute{readTime > 1 ? "s" : ""}
