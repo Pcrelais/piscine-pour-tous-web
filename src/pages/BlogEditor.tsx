@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Save, Image as ImageIcon, Loader2 } from "lucide-react";
+import { ArrowLeft, Save, Image as ImageIcon, Loader2, Upload, X } from "lucide-react";
 
 const CATEGORIES = [
   "Entretien",
@@ -23,6 +23,7 @@ const BlogEditor = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
@@ -32,6 +33,7 @@ const BlogEditor = () => {
   const [readTime, setReadTime] = useState(5);
   const [published, setPublished] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -80,6 +82,70 @@ const BlogEditor = () => {
         description: "Impossible de charger l'article",
       });
       navigate("/blog/dashboard");
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !user) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        variant: "destructive",
+        title: "Fichier invalide",
+        description: "Veuillez sélectionner une image",
+      });
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        variant: "destructive",
+        title: "Fichier trop volumineux",
+        description: "La taille maximale est de 5MB",
+      });
+      return;
+    }
+
+    setUploading(true);
+
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}/${Date.now()}.${fileExt}`;
+
+      const { error: uploadError, data } = await supabase.storage
+        .from('blog-images')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('blog-images')
+        .getPublicUrl(fileName);
+
+      setCoverImage(publicUrl);
+      
+      toast({
+        title: "Image uploadée",
+        description: "L'image a été ajoutée avec succès",
+      });
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Erreur d'upload",
+        description: error.message,
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setCoverImage("");
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
   };
 
@@ -280,40 +346,88 @@ const BlogEditor = () => {
             </div>
 
             <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
-              <h3 className="font-semibold text-lg text-[#004E7C] mb-4 flex items-center gap-2">
+              <h3 className="font-semibold text-lg text-primary mb-4 flex items-center gap-2">
                 <ImageIcon className="h-5 w-5" />
                 Image de couverture
               </h3>
 
-              <div>
-                <Label htmlFor="coverImage">URL de l'image</Label>
-                <Input
-                  id="coverImage"
-                  value={coverImage}
-                  onChange={(e) => setCoverImage(e.target.value)}
-                  placeholder="https://example.com/image.jpg"
-                  className="mt-2"
-                />
-              </div>
+              <div className="space-y-4">
+                <div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="image-upload"
+                  />
+                  <Button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading}
+                    variant="outline"
+                    className="w-full"
+                  >
+                    {uploading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Upload en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Upload className="mr-2 h-4 w-4" />
+                        Télécharger une image
+                      </>
+                    )}
+                  </Button>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Formats acceptés: JPG, PNG, WEBP (max 5MB)
+                  </p>
+                </div>
 
-              {coverImage && (
-                <div className="mt-4">
-                  <p className="text-sm text-gray-600 mb-2">Aperçu :</p>
-                  <img
-                    src={coverImage}
-                    alt="Aperçu"
-                    className="w-full h-40 object-cover rounded-lg"
-                    onError={(e) => {
-                      e.currentTarget.src = "";
-                      toast({
-                        variant: "destructive",
-                        title: "Image invalide",
-                        description: "L'URL de l'image n'est pas valide",
-                      });
-                    }}
+                <div className="relative">
+                  <Label htmlFor="coverImageUrl" className="text-sm">
+                    Ou saisissez une URL
+                  </Label>
+                  <Input
+                    id="coverImageUrl"
+                    value={coverImage}
+                    onChange={(e) => setCoverImage(e.target.value)}
+                    placeholder="https://example.com/image.jpg"
+                    className="mt-2"
                   />
                 </div>
-              )}
+
+                {coverImage && (
+                  <div className="relative mt-4">
+                    <p className="text-sm text-muted-foreground mb-2">Aperçu :</p>
+                    <div className="relative group">
+                      <img
+                        src={coverImage}
+                        alt="Aperçu"
+                        className="w-full h-48 object-cover rounded-lg"
+                        onError={(e) => {
+                          e.currentTarget.src = "";
+                          toast({
+                            variant: "destructive",
+                            title: "Image invalide",
+                            description: "L'URL de l'image n'est pas valide",
+                          });
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        onClick={handleRemoveImage}
+                        variant="destructive"
+                        size="icon"
+                        className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
