@@ -5,6 +5,7 @@ import ServicesPreview from "@/components/ServicesPreview";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import RealizationsSection from "@/components/RealizationsSection";
+import LatestNews from "@/components/LatestNews";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
@@ -25,6 +26,7 @@ const Index = () => {
       <AboutSection />
       <ServicesSection />
       <RealizationsSection />
+      <LatestNews />
       <ContactSection />
       <Footer />
       <CookieBanner />
