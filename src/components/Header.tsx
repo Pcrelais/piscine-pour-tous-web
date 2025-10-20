@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
-  scrollToSection: (sectionId: string) => void;
+  scrollToSection?: (sectionId: string) => void;
 }
 
 const Header = ({ scrollToSection }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = (sectionId: string) => {
-    scrollToSection(sectionId);
+    scrollToSection?.(sectionId);
     setIsMenuOpen(false);
   };
 
@@ -39,30 +39,43 @@ const Header = ({ scrollToSection }: HeaderProps) => {
           
           {/* Navigation Desktop */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
-            <button onClick={() => scrollToSection('accueil')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
-              Accueil
-            </button>
-            <button onClick={() => scrollToSection('apropos')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
-              À propos
-            </button>
-            <button onClick={() => scrollToSection('services')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
-              Services
-            </button>
-            <button onClick={() => scrollToSection('realisations')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
-              Réalisations
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
-              Contact
-            </button>
+            {scrollToSection ? (
+              <>
+                <button onClick={() => scrollToSection('accueil')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                  Accueil
+                </button>
+                <button onClick={() => scrollToSection('apropos')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                  À propos
+                </button>
+                <button onClick={() => scrollToSection('services')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                  Services
+                </button>
+                <button onClick={() => scrollToSection('realisations')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                  Réalisations
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                  Contact
+                </button>
+              </>
+            ) : (
+              <a href="/" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                Retour à l'accueil
+              </a>
+            )}
+            <a href="/auth" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+              Blog
+            </a>
           </nav>
 
-          <Button 
-            onClick={() => scrollToSection('contact')} 
-            className="hidden lg:block bg-[#00AEEF] hover:bg-[#004E7C] text-white text-sm xl:text-base px-4 xl:px-6 py-2"
-          >
-            <span className="hidden xl:inline">Demander un devis gratuit</span>
-            <span className="xl:hidden">Devis gratuit</span>
-          </Button>
+          {scrollToSection && (
+            <Button 
+              onClick={() => scrollToSection('contact')} 
+              className="hidden lg:block bg-[#00AEEF] hover:bg-[#004E7C] text-white text-sm xl:text-base px-4 xl:px-6 py-2"
+            >
+              <span className="hidden xl:inline">Demander un devis gratuit</span>
+              <span className="xl:hidden">Devis gratuit</span>
+            </Button>
+          )}
 
           {/* Espace invisible pour équilibrer sur mobile */}
           <div className="lg:hidden w-10 flex-shrink-0"></div>
