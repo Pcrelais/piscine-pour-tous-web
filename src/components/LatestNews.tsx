@@ -53,12 +53,12 @@ const LatestNews = () => {
 
   if (loading) {
     return (
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-primary text-center mb-12">
             Nos dernières actualités
           </h2>
-          <div className="text-center text-gray-500">Chargement...</div>
+          <div className="text-center text-muted-foreground">Chargement...</div>
         </div>
       </section>
     );
@@ -69,7 +69,7 @@ const LatestNews = () => {
   }
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-primary text-center mb-12">
           Nos dernières actualités
@@ -89,17 +89,17 @@ const LatestNews = () => {
               )}
               <div className="p-6">
                 {post.category && (
-                  <span className="inline-block px-3 py-1 text-xs font-semibold text-[#00AEEF] bg-[#00AEEF]/10 rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold text-secondary bg-secondary/10 rounded-full mb-3">
                     {post.category}
                   </span>
                 )}
-                <h3 className="text-xl font-bold text-[#004E7C] mb-3 line-clamp-2">
+                <h3 className="text-xl font-bold text-primary mb-3 line-clamp-2">
                   {post.title}
                 </h3>
                 {post.excerpt && (
-                  <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-muted-foreground mb-4 line-clamp-3">{post.excerpt}</p>
                 )}
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
                     <span>{formatDate(post.created_at)}</span>
@@ -123,7 +123,7 @@ const LatestNews = () => {
 
         <div className="text-center">
           <Link to="/blog">
-            <Button className="bg-[#00AEEF] hover:bg-[#0095CC] text-white">
+            <Button className="bg-secondary hover:bg-primary text-secondary-foreground">
               Voir tous les articles
             </Button>
           </Link>
