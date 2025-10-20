@@ -52,8 +52,14 @@ const BlogEditor = () => {
 
   useEffect(() => {
     // Auto-calculate read time based on content (strip HTML tags)
-    const text = content.replace(/<[^>]*>/g, '');
-    const words = text.split(/\s+/).filter(word => word.length > 0).length;
+    const stripHtml = (html: string) => {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      return tmp.textContent || tmp.innerText || '';
+    };
+    
+    const text = stripHtml(content);
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
     const calculatedTime = Math.max(1, Math.ceil(words / 200));
     setReadTime(calculatedTime);
   }, [content]);
