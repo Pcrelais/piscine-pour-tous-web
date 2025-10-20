@@ -160,10 +160,10 @@ const BlogDashboard = () => {
               Voir le blog public
             </Button>
             <Button
-              onClick={handleLogout}
+              onClick={() => navigate("/profile")}
               variant="outline"
             >
-              Déconnexion
+              Mon profil
             </Button>
           </div>
         </div>

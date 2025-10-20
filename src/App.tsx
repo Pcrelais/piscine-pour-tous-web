@@ -12,6 +12,7 @@ import BlogPost from "./pages/BlogPost";
 import BlogDashboard from "./pages/BlogDashboard";
 import BlogEditor from "./pages/BlogEditor";
 import CategoriesManager from "./pages/CategoriesManager";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
         <Route path="/" element={<Index />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/blog/dashboard" element={<BlogDashboard />} />
