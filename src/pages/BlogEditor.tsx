@@ -9,14 +9,6 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Save, Image as ImageIcon, Loader2, Upload, X } from "lucide-react";
 import WysiwygEditor from "@/components/WysiwygEditor";
 
-const CATEGORIES = [
-  "Entretien",
-  "Construction",
-  "Rénovation",
-  "Équipement",
-  "Conseils",
-  "Actualités",
-];
 
 const BlogEditor = () => {
   const { id } = useParams();
@@ -29,11 +21,30 @@ const BlogEditor = () => {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
   const [coverImage, setCoverImage] = useState("");
   const [readTime, setReadTime] = useState(5);
   const [published, setPublished] = useState(false);
   const [user, setUser] = useState<any>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("categories")
+        .select("name")
+        .order("name");
+
+      if (error) throw error;
+      setCategories(data?.map(c => c.name) || []);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -335,7 +346,7 @@ const BlogEditor = () => {
                     <SelectValue placeholder="Sélectionner une catégorie" />
                   </SelectTrigger>
                   <SelectContent>
-                    {CATEGORIES.map((cat) => (
+                    {categories.map((cat) => (
                       <SelectItem key={cat} value={cat}>
                         {cat}
                       </SelectItem>

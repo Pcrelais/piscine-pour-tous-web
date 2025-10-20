@@ -136,18 +136,23 @@ const BlogDashboard = () => {
       
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-[#004E7C]">Mes Articles</h1>
+          <h1 className="text-4xl font-bold text-primary">Mes Articles</h1>
           <div className="flex gap-4">
+            <Button
+              onClick={() => navigate("/blog/categories")}
+              variant="outline"
+            >
+              Gérer les catégories
+            </Button>
             <Button
               onClick={() => navigate("/blog")}
               variant="outline"
-              className="border-[#004E7C] text-[#004E7C]"
             >
               Voir le blog public
             </Button>
             <Button
               onClick={() => navigate("/blog/new")}
-              className="bg-[#00AEEF] hover:bg-[#0095CC]"
+              variant="secondary"
             >
               <Plus className="mr-2 h-4 w-4" />
               Nouvel article
@@ -155,7 +160,6 @@ const BlogDashboard = () => {
             <Button
               onClick={handleLogout}
               variant="outline"
-              className="border-[#004E7C] text-[#004E7C]"
             >
               Déconnexion
             </Button>
