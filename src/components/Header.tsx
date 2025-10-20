@@ -1,9 +1,10 @@
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface HeaderProps {
   scrollToSection?: (sectionId: string) => void;
@@ -11,6 +12,21 @@ interface HeaderProps {
 
 const Header = ({ scrollToSection }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const handleMenuClick = (sectionId: string) => {
     scrollToSection?.(sectionId);
@@ -66,6 +82,11 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             <Link to="/blog" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
               Blog
             </Link>
+            {user && (
+              <Link to="/blog/dashboard" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+                Tableau de bord
+              </Link>
+            )}
           </nav>
 
           {scrollToSection && (
@@ -124,6 +145,15 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             >
               Blog
             </Link>
+            {user && (
+              <Link 
+                to="/blog/dashboard"
+                className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tableau de bord
+              </Link>
+            )}
             <div className="pt-2 px-2">
               <Button 
                 onClick={() => handleMenuClick('contact')} 
