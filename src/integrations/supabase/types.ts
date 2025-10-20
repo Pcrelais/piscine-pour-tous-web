@@ -16,34 +16,49 @@ export type Database = {
     Tables: {
       blog_posts: {
         Row: {
+          category: string | null
           content: string
+          cover_image: string | null
           created_at: string
           excerpt: string | null
           id: string
           published: boolean
+          read_time: number | null
+          slug: string | null
           title: string
           updated_at: string
           user_id: string
+          views: number | null
         }
         Insert: {
+          category?: string | null
           content: string
+          cover_image?: string | null
           created_at?: string
           excerpt?: string | null
           id?: string
           published?: boolean
+          read_time?: number | null
+          slug?: string | null
           title: string
           updated_at?: string
           user_id: string
+          views?: number | null
         }
         Update: {
+          category?: string | null
           content?: string
+          cover_image?: string | null
           created_at?: string
           excerpt?: string | null
           id?: string
           published?: boolean
+          read_time?: number | null
+          slug?: string | null
           title?: string
           updated_at?: string
           user_id?: string
+          views?: number | null
         }
         Relationships: [
           {
@@ -84,7 +99,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_slug: {
+        Args: { p_title: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

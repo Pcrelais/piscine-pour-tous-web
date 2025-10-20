@@ -3,16 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Search, Clock, TrendingUp } from "lucide-react";
 
 interface BlogPost {
   id: string;
+  slug: string;
   title: string;
   content: string;
   excerpt: string | null;
+  cover_image: string | null;
+  category: string | null;
+  read_time: number;
   created_at: string;
   profiles: {
     full_name: string | null;
@@ -21,8 +27,11 @@ interface BlogPost {
 
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -43,6 +52,10 @@ const Blog = () => {
   useEffect(() => {
     fetchPublishedPosts();
   }, []);
+
+  useEffect(() => {
+    filterPosts();
+  }, [searchTerm, selectedCategory, posts]);
 
   const fetchPublishedPosts = async () => {
     try {
@@ -70,6 +83,25 @@ const Blog = () => {
     }
   };
 
+  const filterPosts = () => {
+    let filtered = posts;
+
+    if (searchTerm) {
+      filtered = filtered.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.content.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedCategory) {
+      filtered = filtered.filter((post) => post.category === selectedCategory);
+    }
+
+    setFilteredPosts(filtered);
+  };
+
+  const categories = Array.from(new Set(posts.map((p) => p.category).filter(Boolean)));
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -79,20 +111,62 @@ const Blog = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       
-      <main className="flex-1 container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-[#004E7C] mb-2">Blog</h1>
-            <p className="text-gray-600">Découvrez nos derniers articles</p>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-[#004E7C] to-[#00AEEF] text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
+              Blog Piscine Pour Tous
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 opacity-90">
+              Conseils, actualités et expertise piscine
+            </p>
+            
+            {/* Search Bar */}
+            <div className="relative max-w-2xl mx-auto">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Input
+                type="text"
+                placeholder="Rechercher un article..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-12 py-6 text-lg bg-white/10 backdrop-blur-md border-white/20 text-white placeholder:text-white/60"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main className="flex-1 container mx-auto px-4 py-12">
+        {/* Categories & Actions */}
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
+          <div className="flex flex-wrap gap-2">
+            <Button
+              onClick={() => setSelectedCategory(null)}
+              variant={selectedCategory === null ? "default" : "outline"}
+              className={selectedCategory === null ? "bg-[#00AEEF]" : ""}
+            >
+              Tous
+            </Button>
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                variant={selectedCategory === category ? "default" : "outline"}
+                className={selectedCategory === category ? "bg-[#00AEEF]" : ""}
+              >
+                {category}
+              </Button>
+            ))}
           </div>
           
           {user ? (
             <Button
               onClick={() => navigate("/blog/dashboard")}
-              className="bg-[#00AEEF] hover:bg-[#0095CC]"
+              className="bg-[#004E7C] hover:bg-[#003A5C]"
             >
               Mon tableau de bord
             </Button>
@@ -107,13 +181,16 @@ const Blog = () => {
           )}
         </div>
 
-        {posts.length === 0 ? (
+        {/* Posts Grid */}
+        {filteredPosts.length === 0 ? (
           <Card className="p-12 text-center">
             <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
             <p className="text-gray-500 text-lg mb-4">
-              Aucun article publié pour le moment
+              {searchTerm || selectedCategory 
+                ? "Aucun article trouvé" 
+                : "Aucun article publié pour le moment"}
             </p>
-            {user && (
+            {user && !searchTerm && !selectedCategory && (
               <Button
                 onClick={() => navigate("/blog/new")}
                 className="bg-[#00AEEF] hover:bg-[#0095CC]"
@@ -124,32 +201,58 @@ const Blog = () => {
           </Card>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <Card key={post.id} className="p-6 hover:shadow-lg transition-shadow">
-                <h2 className="text-2xl font-bold text-[#004E7C] mb-3">
-                  {post.title}
-                </h2>
+            {filteredPosts.map((post, index) => (
+              <Card 
+                key={post.id} 
+                className="overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => navigate(`/blog/${post.slug}`)}
+              >
+                {/* Cover Image */}
+                {post.cover_image ? (
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={post.cover_image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-48 bg-gradient-to-br from-[#004E7C] to-[#00AEEF] flex items-center justify-center">
+                    <BookOpen className="h-16 w-16 text-white opacity-50" />
+                  </div>
+                )}
 
-                <p className="text-gray-600 mb-4 line-clamp-4">
-                  {post.excerpt || post.content.substring(0, 200) + "..."}
-                </p>
+                <div className="p-6">
+                  {/* Category Badge */}
+                  {post.category && (
+                    <Badge className="mb-3 bg-[#00AEEF] hover:bg-[#0095CC]">
+                      {post.category}
+                    </Badge>
+                  )}
 
-                <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-                  <span>
-                    Par {post.profiles?.full_name || "Auteur"}
-                  </span>
-                  <span>
-                    {new Date(post.created_at).toLocaleDateString("fr-FR")}
-                  </span>
+                  {/* Title */}
+                  <h2 className="text-2xl font-bold text-[#004E7C] mb-3 group-hover:text-[#00AEEF] transition-colors line-clamp-2">
+                    {post.title}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {post.excerpt || post.content.substring(0, 150) + "..."}
+                  </p>
+
+                  {/* Meta Info */}
+                  <div className="flex justify-between items-center text-sm text-gray-500">
+                    <span className="flex items-center gap-1">
+                      <TrendingUp className="h-4 w-4" />
+                      {post.profiles?.full_name || "Auteur"}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      {post.read_time} min
+                    </span>
+                  </div>
                 </div>
-
-                <Button
-                  onClick={() => navigate(`/blog/${post.id}`)}
-                  variant="outline"
-                  className="w-full border-[#00AEEF] text-[#00AEEF] hover:bg-[#00AEEF] hover:text-white"
-                >
-                  Lire l'article
-                </Button>
               </Card>
             ))}
           </div>

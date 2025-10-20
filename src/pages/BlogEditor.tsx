@@ -5,8 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Save } from "lucide-react";
+import { ArrowLeft, Save, Image as ImageIcon, Loader2 } from "lucide-react";
+
+const CATEGORIES = [
+  "Entretien",
+  "Construction",
+  "Rénovation",
+  "Équipement",
+  "Conseils",
+  "Actualités",
+];
 
 const BlogEditor = () => {
   const { id } = useParams();
@@ -14,8 +24,12 @@ const BlogEditor = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
+  const [coverImage, setCoverImage] = useState("");
+  const [readTime, setReadTime] = useState(5);
   const [published, setPublished] = useState(false);
   const [user, setUser] = useState<any>(null);
 
@@ -34,6 +48,13 @@ const BlogEditor = () => {
     }
   }, [id, user]);
 
+  useEffect(() => {
+    // Auto-calculate read time based on content
+    const words = content.split(/\s+/).length;
+    const calculatedTime = Math.max(1, Math.ceil(words / 200));
+    setReadTime(calculatedTime);
+  }, [content]);
+
   const fetchPost = async () => {
     try {
       const { data, error } = await supabase
@@ -45,8 +66,12 @@ const BlogEditor = () => {
       if (error) throw error;
 
       setTitle(data.title);
+      setSlug(data.slug || "");
       setExcerpt(data.excerpt || "");
       setContent(data.content);
+      setCategory(data.category || "");
+      setCoverImage(data.cover_image || "");
+      setReadTime(data.read_time || 5);
       setPublished(data.published);
     } catch (error: any) {
       toast({
@@ -54,7 +79,7 @@ const BlogEditor = () => {
         title: "Erreur",
         description: "Impossible de charger l'article",
       });
-      navigate("/blog");
+      navigate("/blog/dashboard");
     }
   };
 
@@ -67,8 +92,12 @@ const BlogEditor = () => {
     try {
       const postData = {
         title,
+        slug: slug || undefined,
         excerpt: excerpt || null,
         content,
+        category: category || null,
+        cover_image: coverImage || null,
+        read_time: readTime,
         published,
         user_id: user.id,
       };
@@ -96,7 +125,7 @@ const BlogEditor = () => {
         });
       }
 
-      navigate("/blog");
+      navigate("/blog/dashboard");
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -110,87 +139,209 @@ const BlogEditor = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-6">
-          <Button
-            onClick={() => navigate("/blog")}
-            variant="outline"
-            className="mb-4"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Retour
-          </Button>
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <Button
+              onClick={() => navigate("/blog/dashboard")}
+              variant="outline"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Retour
+            </Button>
+            
+            <h1 className="text-2xl font-bold text-[#004E7C]">
+              {id ? "Éditer l'article" : "Nouvel article"}
+            </h1>
 
-          <h1 className="text-4xl font-bold text-[#004E7C]">
-            {id ? "Éditer l'article" : "Nouvel article"}
-          </h1>
+            <Button
+              onClick={handleSave}
+              className="bg-[#00AEEF] hover:bg-[#0095CC]"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Enregistrement...
+                </>
+              ) : (
+                <>
+                  <Save className="mr-2 h-4 w-4" />
+                  Enregistrer
+                </>
+              )}
+            </Button>
+          </div>
         </div>
+      </div>
 
-        <form onSubmit={handleSave} className="bg-white rounded-lg shadow-md p-8 space-y-6">
-          <div>
-            <Label htmlFor="title">Titre de l'article *</Label>
-            <Input
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-              placeholder="Un titre accrocheur..."
-              className="text-lg"
-            />
+      <div className="container mx-auto px-4 py-8 max-w-5xl">
+        <form onSubmit={handleSave} className="space-y-6">
+          {/* Main Content */}
+          <div className="bg-white rounded-lg shadow-md p-6 space-y-6">
+            <div>
+              <Label htmlFor="title" className="text-lg font-semibold">
+                Titre de l'article *
+              </Label>
+              <Input
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+                placeholder="Un titre accrocheur..."
+                className="text-2xl font-bold mt-2 border-none shadow-none p-0 focus-visible:ring-0"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="slug" className="text-sm text-gray-600">
+                URL personnalisée (optionnel)
+              </Label>
+              <Input
+                id="slug"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
+                placeholder="mon-article-super-interessant"
+                className="mt-2"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Laissez vide pour génération automatique
+              </p>
+            </div>
+
+            <div>
+              <Label htmlFor="excerpt" className="text-lg font-semibold">
+                Résumé (extrait)
+              </Label>
+              <Textarea
+                id="excerpt"
+                value={excerpt}
+                onChange={(e) => setExcerpt(e.target.value)}
+                placeholder="Un bref résumé qui apparaîtra sur la page d'accueil..."
+                rows={3}
+                className="mt-2"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="content" className="text-lg font-semibold">
+                Contenu de l'article *
+              </Label>
+              <Textarea
+                id="content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+                placeholder="Écrivez votre article ici..."
+                rows={20}
+                className="mt-2 font-mono"
+              />
+              <p className="text-sm text-gray-500 mt-2">
+                Temps de lecture estimé : {readTime} minute{readTime > 1 ? "s" : ""}
+              </p>
+            </div>
           </div>
 
-          <div>
-            <Label htmlFor="excerpt">Extrait (résumé court)</Label>
-            <Textarea
-              id="excerpt"
-              value={excerpt}
-              onChange={(e) => setExcerpt(e.target.value)}
-              placeholder="Un bref résumé de votre article..."
-              rows={3}
-            />
+          {/* Sidebar Settings */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
+              <h3 className="font-semibold text-lg text-[#004E7C] mb-4">
+                Paramètres
+              </h3>
+
+              <div>
+                <Label htmlFor="category">Catégorie</Label>
+                <Select value={category} onValueChange={setCategory}>
+                  <SelectTrigger id="category" className="mt-2">
+                    <SelectValue placeholder="Sélectionner une catégorie" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {CATEGORIES.map((cat) => (
+                      <SelectItem key={cat} value={cat}>
+                        {cat}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex items-center gap-2 pt-4">
+                <input
+                  type="checkbox"
+                  id="published"
+                  checked={published}
+                  onChange={(e) => setPublished(e.target.checked)}
+                  className="w-5 h-5 text-[#00AEEF] rounded"
+                />
+                <Label htmlFor="published" className="cursor-pointer text-base">
+                  Publier l'article (visible publiquement)
+                </Label>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
+              <h3 className="font-semibold text-lg text-[#004E7C] mb-4 flex items-center gap-2">
+                <ImageIcon className="h-5 w-5" />
+                Image de couverture
+              </h3>
+
+              <div>
+                <Label htmlFor="coverImage">URL de l'image</Label>
+                <Input
+                  id="coverImage"
+                  value={coverImage}
+                  onChange={(e) => setCoverImage(e.target.value)}
+                  placeholder="https://example.com/image.jpg"
+                  className="mt-2"
+                />
+              </div>
+
+              {coverImage && (
+                <div className="mt-4">
+                  <p className="text-sm text-gray-600 mb-2">Aperçu :</p>
+                  <img
+                    src={coverImage}
+                    alt="Aperçu"
+                    className="w-full h-40 object-cover rounded-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "";
+                      toast({
+                        variant: "destructive",
+                        title: "Image invalide",
+                        description: "L'URL de l'image n'est pas valide",
+                      });
+                    }}
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
-          <div>
-            <Label htmlFor="content">Contenu *</Label>
-            <Textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-              placeholder="Écrivez votre article ici..."
-              rows={15}
-              className="font-mono"
-            />
-          </div>
-
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="published"
-              checked={published}
-              onChange={(e) => setPublished(e.target.checked)}
-              className="w-4 h-4 text-[#00AEEF] rounded"
-            />
-            <Label htmlFor="published" className="cursor-pointer">
-              Publier l'article (visible publiquement)
-            </Label>
-          </div>
-
-          <div className="flex gap-4">
+          {/* Action Buttons */}
+          <div className="flex gap-4 justify-end bg-white rounded-lg shadow-md p-6">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => navigate("/blog/dashboard")}
+            >
+              Annuler
+            </Button>
             <Button
               type="submit"
               className="bg-[#00AEEF] hover:bg-[#0095CC]"
               disabled={loading}
             >
-              <Save className="mr-2 h-4 w-4" />
-              {loading ? "Enregistrement..." : "Enregistrer"}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => navigate("/blog")}
-            >
-              Annuler
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Enregistrement...
+                </>
+              ) : (
+                <>
+                  <Save className="mr-2 h-4 w-4" />
+                  Enregistrer l'article
+                </>
+              )}
             </Button>
           </div>
         </form>
