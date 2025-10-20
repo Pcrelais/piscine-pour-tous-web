@@ -55,12 +55,19 @@ const BlogEditor = () => {
     const stripHtml = (html: string) => {
       const tmp = document.createElement('div');
       tmp.innerHTML = html;
-      return tmp.textContent || tmp.innerText || '';
+      const text = tmp.textContent || tmp.innerText || '';
+      return text;
     };
     
     const text = stripHtml(content);
-    const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
-    const calculatedTime = Math.max(1, Math.ceil(words / 200));
+    // Compter seulement les mots non vides
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    const wordCount = words.length;
+    
+    console.log('Nombre de mots:', wordCount); // Pour debug
+    
+    // 200 mots par minute en moyenne
+    const calculatedTime = Math.max(1, Math.ceil(wordCount / 200));
     setReadTime(calculatedTime);
   }, [content]);
 
@@ -303,9 +310,14 @@ const BlogEditor = () => {
                 content={content}
                 onChange={setContent}
               />
-              <p className="text-sm text-muted-foreground mt-2">
-                Temps de lecture estimé : {readTime} minute{readTime > 1 ? "s" : ""}
-              </p>
+              <div className="flex justify-between items-center mt-2">
+                <p className="text-sm text-muted-foreground">
+                  Temps de lecture estimé : <span className="font-semibold">{readTime} minute{readTime > 1 ? "s" : ""}</span>
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {content ? Math.max(0, content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(w => w.length > 0).length) : 0} mots
+                </p>
+              </div>
             </div>
           </div>
 
