@@ -20,23 +20,36 @@ interface WysiwygEditorProps {
 const WysiwygEditor = ({ content, onChange }: WysiwygEditorProps) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        // Désactiver les extensions qu'on configure manuellement
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
       Underline,
       Link.configure({
         openOnClick: false,
+        HTMLAttributes: {
+          class: 'text-secondary underline',
+        },
       }),
-      Image,
+      Image.configure({
+        HTMLAttributes: {
+          class: 'rounded-lg max-w-full h-auto',
+        },
+      }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
     ],
-    content,
+    content: content || '<p></p>',
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
+      const html = editor.getHTML();
+      onChange(html);
     },
     editorProps: {
       attributes: {
-        class: 'prose prose-lg max-w-none focus:outline-none min-h-[400px] p-4',
+        class: 'prose prose-lg max-w-none focus:outline-none min-h-[400px] p-4 bg-white',
       },
     },
   });
