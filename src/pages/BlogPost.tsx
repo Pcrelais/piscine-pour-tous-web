@@ -123,7 +123,7 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 pt-28">
+    <div className="min-h-screen flex flex-col bg-gray-50 pt-32">
       <Header />
       
       {/* Hero Section with Cover Image */}
