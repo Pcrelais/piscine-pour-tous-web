@@ -135,9 +135,18 @@ const BlogDashboard = () => {
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-primary">Mes Articles</h1>
-          <div className="flex gap-4">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-primary mb-4">Mes Articles</h1>
+          
+          {/* Boutons principaux */}
+          <div className="flex flex-wrap gap-3">
+            <Button
+              onClick={() => navigate("/blog/new")}
+              className="bg-[#00AEEF] hover:bg-[#0095CC] text-white"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              Nouvel article
+            </Button>
             <Button
               onClick={() => navigate("/blog/categories")}
               variant="outline"
@@ -149,13 +158,6 @@ const BlogDashboard = () => {
               variant="outline"
             >
               Voir le blog public
-            </Button>
-            <Button
-              onClick={() => navigate("/blog/new")}
-              variant="secondary"
-            >
-              <Plus className="mr-2 h-4 w-4" />
-              Nouvel article
             </Button>
             <Button
               onClick={handleLogout}
