@@ -132,10 +132,10 @@ const BlogPost = () => {
           <img
             src={post.cover_image}
             alt={post.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/30" />
         
         <div className="relative container mx-auto px-4 h-full flex flex-col justify-end pb-12">
           <Button
@@ -153,7 +153,7 @@ const BlogPost = () => {
             </Badge>
           )}
 
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl drop-shadow-2xl [text-shadow:_2px_2px_8px_rgb(0_0_0_/_80%)]">
             {post.title}
           </h1>
 
