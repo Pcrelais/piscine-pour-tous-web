@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin] = useState(true); // Inscription désactivée
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -29,39 +29,18 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-        if (error) throw error;
+      if (error) throw error;
 
-        toast({
-          title: "Connexion réussie",
-          description: "Bienvenue !",
-        });
-        navigate("/");
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              full_name: fullName,
-            },
-            emailRedirectTo: `${window.location.origin}/`,
-          },
-        });
-
-        if (error) throw error;
-
-        toast({
-          title: "Compte créé",
-          description: "Vous êtes maintenant connecté !",
-        });
-        navigate("/");
-      }
+      toast({
+        title: "Connexion réussie",
+        description: "Bienvenue !",
+      });
+      navigate("/");
     } catch (error: any) {
       toast({
         variant: "destructive",
@@ -77,24 +56,10 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#004E7C] to-[#00AEEF] p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8">
         <h1 className="text-3xl font-bold text-[#004E7C] mb-6 text-center">
-          {isLogin ? "Connexion" : "Inscription"}
+          Connexion
         </h1>
 
         <form onSubmit={handleAuth} className="space-y-4">
-          {!isLogin && (
-            <div>
-              <Label htmlFor="fullName">Nom complet</Label>
-              <Input
-                id="fullName"
-                type="text"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required={!isLogin}
-                placeholder="Votre nom"
-              />
-            </div>
-          )}
-
           <div>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -130,25 +95,11 @@ const Auth = () => {
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Chargement...
               </>
-            ) : isLogin ? (
-              "Se connecter"
             ) : (
-              "S'inscrire"
+              "Se connecter"
             )}
           </Button>
         </form>
-
-        <div className="mt-4 text-center">
-          <button
-            type="button"
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-[#00AEEF] hover:underline"
-          >
-            {isLogin
-              ? "Pas de compte ? S'inscrire"
-              : "Déjà un compte ? Se connecter"}
-          </button>
-        </div>
       </div>
     </div>
   );
