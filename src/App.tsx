@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import MentionsLegales from "./pages/MentionsLegales";
 import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import BlogDashboard from "./pages/BlogDashboard";
 import BlogEditor from "./pages/BlogEditor";
 
@@ -23,6 +24,7 @@ const App = () => (
         <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/blog/dashboard" element={<BlogDashboard />} />
           <Route path="/blog/new" element={<BlogEditor />} />
           <Route path="/blog/edit/:id" element={<BlogEditor />} />
