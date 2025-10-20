@@ -62,7 +62,7 @@ const Header = ({ scrollToSection }: HeaderProps) => {
                 Retour à l'accueil
               </a>
             )}
-            <a href="/auth" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+            <a href="/blog" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
               Blog
             </a>
           </nav>
