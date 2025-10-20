@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Facebook, Twitter, Linkedin } from "lucide-react";
 
 interface BlogPost {
   id: string;
@@ -49,6 +49,26 @@ const LatestNews = () => {
       month: "long",
       year: "numeric",
     });
+  };
+
+  const shareOnSocial = (platform: string, post: BlogPost) => {
+    const url = `${window.location.origin}/blog/${post.slug}`;
+    const title = post.title;
+    
+    let shareUrl = "";
+    switch (platform) {
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        break;
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        break;
+      case "linkedin":
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        break;
+    }
+    
+    window.open(shareUrl, "_blank", "width=600,height=400");
   };
 
   if (loading) {
@@ -110,6 +130,32 @@ const LatestNews = () => {
                       <span>{post.read_time} min</span>
                     </div>
                   )}
+                </div>
+                <div className="flex gap-2 mb-3">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => shareOnSocial("facebook", post)}
+                    className="h-8 w-8"
+                  >
+                    <Facebook className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => shareOnSocial("twitter", post)}
+                    className="h-8 w-8"
+                  >
+                    <Twitter className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => shareOnSocial("linkedin", post)}
+                    className="h-8 w-8"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </Button>
                 </div>
                 <Link to={`/blog/${post.slug}`}>
                   <Button variant="outline" className="w-full">
