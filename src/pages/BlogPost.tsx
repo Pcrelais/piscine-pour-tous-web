@@ -127,7 +127,7 @@ const BlogPost = () => {
       <Header />
       
       {/* Hero Section with Cover Image */}
-      <div className="relative h-96 bg-gradient-to-br from-[#004E7C] to-[#00AEEF]">
+      <div className="relative h-96 bg-gradient-to-br from-[#004E7C] to-[#00AEEF] pt-20">
         {post.cover_image && (
           <img
             src={post.cover_image}
