@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, Save, Image as ImageIcon, Loader2, Upload, X } from "lucide-react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CATEGORIES = [
   "Entretien",
@@ -203,6 +204,33 @@ const BlogEditor = () => {
     }
   };
 
+  // Configuration de l'éditeur riche
+  const editorModules = useMemo(() => ({
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'font': [] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['blockquote', 'code-block'],
+      ['link', 'image', 'video'],
+      ['clean']
+    ],
+  }), []);
+
+  const editorFormats = [
+    'header', 'font', 'size',
+    'bold', 'italic', 'underline', 'strike',
+    'color', 'background',
+    'list', 'bullet', 'indent',
+    'align',
+    'blockquote', 'code-block',
+    'link', 'image', 'video'
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
@@ -216,13 +244,13 @@ const BlogEditor = () => {
               Retour
             </Button>
             
-            <h1 className="text-2xl font-bold text-[#004E7C]">
+            <h1 className="text-2xl font-bold text-primary">
               {id ? "Éditer l'article" : "Nouvel article"}
             </h1>
 
             <Button
               onClick={handleSave}
-              className="bg-[#00AEEF] hover:bg-[#0095CC]"
+              variant="secondary"
               disabled={loading}
             >
               {loading ? (
@@ -260,7 +288,7 @@ const BlogEditor = () => {
             </div>
 
             <div>
-              <Label htmlFor="slug" className="text-sm text-gray-600">
+              <Label htmlFor="slug" className="text-sm text-muted-foreground">
                 URL personnalisée (optionnel)
               </Label>
               <Input
@@ -270,7 +298,7 @@ const BlogEditor = () => {
                 placeholder="mon-article-super-interessant"
                 className="mt-2"
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 Laissez vide pour génération automatique
               </p>
             </div>
@@ -279,30 +307,30 @@ const BlogEditor = () => {
               <Label htmlFor="excerpt" className="text-lg font-semibold">
                 Résumé (extrait)
               </Label>
-              <Textarea
+              <Input
                 id="excerpt"
                 value={excerpt}
                 onChange={(e) => setExcerpt(e.target.value)}
                 placeholder="Un bref résumé qui apparaîtra sur la page d'accueil..."
-                rows={3}
                 className="mt-2"
               />
             </div>
 
             <div>
-              <Label htmlFor="content" className="text-lg font-semibold">
+              <Label className="text-lg font-semibold mb-2 block">
                 Contenu de l'article *
               </Label>
-              <Textarea
-                id="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                required
-                placeholder="Écrivez votre article ici..."
-                rows={20}
-                className="mt-2 font-mono"
-              />
-              <p className="text-sm text-gray-500 mt-2">
+              <div className="rich-text-editor">
+                <ReactQuill
+                  theme="snow"
+                  value={content}
+                  onChange={setContent}
+                  modules={editorModules}
+                  formats={editorFormats}
+                  placeholder="Commencez à écrire votre article..."
+                />
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
                 Temps de lecture estimé : {readTime} minute{readTime > 1 ? "s" : ""}
               </p>
             </div>
@@ -311,7 +339,7 @@ const BlogEditor = () => {
           {/* Sidebar Settings */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg shadow-md p-6 space-y-4">
-              <h3 className="font-semibold text-lg text-[#004E7C] mb-4">
+              <h3 className="font-semibold text-lg text-primary mb-4">
                 Paramètres
               </h3>
 
@@ -337,7 +365,7 @@ const BlogEditor = () => {
                   id="published"
                   checked={published}
                   onChange={(e) => setPublished(e.target.checked)}
-                  className="w-5 h-5 text-[#00AEEF] rounded"
+                  className="w-5 h-5 rounded accent-secondary"
                 />
                 <Label htmlFor="published" className="cursor-pointer text-base">
                   Publier l'article (visible publiquement)
@@ -442,7 +470,7 @@ const BlogEditor = () => {
             </Button>
             <Button
               type="submit"
-              className="bg-[#00AEEF] hover:bg-[#0095CC]"
+              variant="secondary"
               disabled={loading}
             >
               {loading ? (

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import RichTextViewer from "@/components/RichTextViewer";
 import { ArrowLeft, Calendar, User, Clock, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
 
 interface BlogPost {
@@ -147,7 +148,7 @@ const BlogPost = () => {
           </Button>
 
           {post.category && (
-            <Badge className="self-start mb-4 bg-[#00AEEF] hover:bg-[#0095CC] text-lg px-4 py-2">
+            <Badge variant="secondary" className="self-start mb-4 text-lg px-4 py-2">
               {post.category}
             </Badge>
           )}
@@ -184,18 +185,14 @@ const BlogPost = () => {
           {/* Article Content */}
           <article className="bg-white rounded-lg shadow-lg p-8 md:p-12 mb-12">
             {post.excerpt && (
-              <div className="bg-blue-50 border-l-4 border-[#00AEEF] p-6 mb-8 rounded-r-lg">
-                <p className="text-xl text-gray-700 italic leading-relaxed">
+              <div className="bg-secondary/10 border-l-4 border-secondary p-6 mb-8 rounded-r-lg">
+                <p className="text-xl text-foreground italic leading-relaxed">
                   {post.excerpt}
                 </p>
               </div>
             )}
 
-            <div className="prose prose-lg max-w-none">
-              <div className="text-gray-800 whitespace-pre-wrap leading-relaxed text-lg">
-                {post.content}
-              </div>
-            </div>
+            <RichTextViewer content={post.content} />
 
             {/* Share Buttons */}
             <div className="mt-12 pt-8 border-t border-gray-200">
@@ -238,7 +235,7 @@ const BlogPost = () => {
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-[#004E7C] mb-6">
+              <h2 className="text-3xl font-bold text-primary mb-6">
                 Articles similaires
               </h2>
               <div className="grid gap-6 md:grid-cols-3">
