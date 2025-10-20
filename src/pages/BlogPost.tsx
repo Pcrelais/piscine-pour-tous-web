@@ -123,11 +123,11 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50 pt-20">
       <Header />
       
       {/* Hero Section with Cover Image */}
-      <div className="relative h-96 bg-gradient-to-br from-[#004E7C] to-[#00AEEF] pt-20">
+      <div className="relative h-96 bg-gradient-to-br from-[#004E7C] to-[#00AEEF]">
         {post.cover_image && (
           <img
             src={post.cover_image}
