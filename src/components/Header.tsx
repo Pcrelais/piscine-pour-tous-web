@@ -1,6 +1,7 @@
 
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -58,13 +59,13 @@ const Header = ({ scrollToSection }: HeaderProps) => {
                 </button>
               </>
             ) : (
-              <a href="/" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+              <Link to="/" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
                 Retour à l'accueil
-              </a>
+              </Link>
             )}
-            <a href="/blog" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
+            <Link to="/blog" className="text-[#004E7C] hover:text-[#00AEEF] transition-colors font-medium text-sm xl:text-base">
               Blog
-            </a>
+            </Link>
           </nav>
 
           {scrollToSection && (
@@ -116,6 +117,13 @@ const Header = ({ scrollToSection }: HeaderProps) => {
             >
               Contact
             </button>
+            <Link 
+              to="/blog"
+              className="block w-full text-left py-3 px-2 text-[#004E7C] hover:text-[#00AEEF] hover:bg-gray-50 font-medium rounded-md transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
             <div className="pt-2 px-2">
               <Button 
                 onClick={() => handleMenuClick('contact')} 
